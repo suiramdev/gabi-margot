@@ -1,0 +1,38 @@
+{
+  "name": "gabi-margot",
+  "description": "An example using TypeScript in Hydrogen",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "shopify hydrogen dev",
+    "build": "shopify hydrogen build",
+    "preview": "shopify hydrogen preview"
+  },
+  "devDependencies": {
+    "@shopify/cli": "3.0.27",
+    "@shopify/cli-hydrogen": "3.0.27",
+    "@tailwindcss/typography": "^0.5.3",
+    "@types/react": "^18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "autoprefixer": "^10.4.7",
+    "eslint": "^8.19.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-react": "^7.30.1",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.5",
+    "typescript": "^4.6.4",
+    "vite": "^2.9.0"
+  },
+  "dependencies": {
+    "@shopify/hydrogen": "^1.0.2",
+    "clsx": "^1.2.1",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-hydrogen": "^0.12.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0"
+  },
+  "author": "suiramdev"
+}
