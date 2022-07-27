@@ -1,8 +1,19 @@
-import React from "react";
+import React, { Suspense } from "react";
+import { useShopQuery, Link } from "@shopify/hydrogen";
+import { Collection } from "@shopify/hydrogen/storefront-api-types";
 import Layout from "../components/Layout/Layout.server";
 import Button from "../components/Button.client";
+import Polaroid from "../components/Polaroid";
+import COLLECTIONS_QUERY from "../queries/Collections";
 
 function Home() {
+  const { data } = useShopQuery<any>({
+    query: COLLECTIONS_QUERY,
+    preload: true,
+  });
+
+  const collections: Collection[] = data.collections.nodes;
+
   return (
     <Layout>
       <section className="h-[80vh] md:bg-hero bg-cover bg-center">
@@ -22,8 +33,30 @@ function Home() {
         </div>
       </section>
       <section className="flex flex-col items-center py-20">
-        <h2>Nos Produits</h2>
-        <div className="flex gap-4" />
+        <h2 className="mb-12">Nos Produits</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12">
+          <Suspense fallback={null}>
+            {collections.map((collection, k) => (
+              <Link
+                to="/collection/{collection.handle}"
+                className="hover:no-underline"
+                key={collection.id}
+              >
+                <Polaroid
+                  image={collection.image?.url}
+                  content={collection.title}
+                  tape={{
+                    invert: k % 2 === 0,
+                  }}
+                  tilt={{
+                    hover: true,
+                    invert: k % 2 === 0,
+                  }}
+                />
+              </Link>
+            ))}
+          </Suspense>
+        </div>
       </section>
     </Layout>
   );

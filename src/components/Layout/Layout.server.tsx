@@ -1,5 +1,5 @@
 import React from "react";
-import { gql, useShopQuery } from "@shopify/hydrogen";
+import { useShopQuery } from "@shopify/hydrogen";
 import type { Collection } from "@shopify/hydrogen/storefront-api-types";
 import Header from "./Header.client";
 import Noise from "./Noise.client";
@@ -7,6 +7,7 @@ import Footer from "./Footer/Footer.client";
 import MobileNav from "./NavMenu.client";
 import NavProvider from "../../providers/NavMenuProvider.client";
 import Content from "./Content.client";
+import COLLECTIONS_QUERY from "../../queries/Collections";
 
 type Props = {
   children: React.ReactNode;
@@ -15,6 +16,7 @@ type Props = {
 function Layout({ children }: Props) {
   const { data } = useShopQuery<any>({
     query: COLLECTIONS_QUERY,
+    preload: true,
   });
 
   const collections: Collection[] = data.collections.nodes;
@@ -32,17 +34,5 @@ function Layout({ children }: Props) {
     </Noise>
   );
 }
-
-const COLLECTIONS_QUERY = gql`
-  query {
-    collections(first: 5) {
-      nodes {
-        id
-        title
-        handle
-      }
-    }
-  }
-`;
 
 export default Layout;
