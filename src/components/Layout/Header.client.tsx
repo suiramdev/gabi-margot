@@ -21,7 +21,7 @@ function Header({ collections }: Props) {
 
   return (
     <>
-      <div className="flex justify-between items-center px-10 lg:px-20 py-10 text-3xl bg-default-200 lg:bg-transparent">
+      <div className="sticky top-0 left-0 flex justify-between items-center px-10 lg:px-20 py-10 text-3xl bg-default-200 lg:bg-transparent">
         <button
           type="button"
           className="block lg:hidden"

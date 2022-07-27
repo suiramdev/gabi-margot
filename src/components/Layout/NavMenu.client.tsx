@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, Link, useRouteParams} from "@shopify/hydrogen";
+import { Image, Link, useRouteParams } from "@shopify/hydrogen";
 import type { Collection } from "@shopify/hydrogen/storefront-api-types";
 import clsx from "clsx";
 import { NavMenuContext } from "../../providers/NavMenuProvider.client";
