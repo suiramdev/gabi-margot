@@ -1,12 +1,12 @@
 import React from "react";
 import {
-  gql,
   HydrogenRouteProps,
   useLocalization,
   useShopQuery,
 } from "@shopify/hydrogen";
 import Layout from "../../components/Layout/Layout.server";
 import NotFound from "../../components/NotFound.server";
+import POLICIES_QUERY from "../../queries/Policies";
 
 function Policy({ params }: HydrogenRouteProps) {
   const {
@@ -59,38 +59,5 @@ function Policy({ params }: HydrogenRouteProps) {
     </Layout>
   );
 }
-
-const POLICIES_QUERY = gql`
-  fragment Policy on ShopPolicy {
-    body
-    handle
-    id
-    title
-    url
-  }
-
-  query PoliciesQuery(
-    $languageCode: LanguageCode
-    $privacyPolicy: Boolean!
-    $shippingPolicy: Boolean!
-    $termsOfService: Boolean!
-    $refundPolicy: Boolean!
-  ) @inContext(language: $languageCode) {
-    shop {
-      privacyPolicy @include(if: $privacyPolicy) {
-        ...Policy
-      }
-      shippingPolicy @include(if: $shippingPolicy) {
-        ...Policy
-      }
-      termsOfService @include(if: $termsOfService) {
-        ...Policy
-      }
-      refundPolicy @include(if: $refundPolicy) {
-        ...Policy
-      }
-    }
-  }
-`;
 
 export default Policy;
