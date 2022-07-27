@@ -3,6 +3,9 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        topSecret: ["Top Secret", "sans-serif"],
+      },
       colors: {
         vintage: {
           "green": '#A9BC70',

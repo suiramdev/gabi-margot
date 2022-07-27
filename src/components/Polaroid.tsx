@@ -17,9 +17,10 @@ type Props = {
   tape?: Tape | boolean;
   tilt?: Tilt | boolean;
   className?: string;
+  soldOut?: boolean;
 };
 
-function Polaroid({ tape, tilt, image, content, className }: Props) {
+function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
   return (
     <figure
       className={clsx(
@@ -31,12 +32,10 @@ function Polaroid({ tape, tilt, image, content, className }: Props) {
             : "before:right-[5px] before:-rotate-12",
         ],
         tilt && [
-          typeof tilt !== "boolean" && tilt.invert ? "rotate-6" : "-rotate-6",
+          typeof tilt !== "boolean" && tilt.invert ? "rotate-2" : "-rotate-2",
           typeof tilt !== "boolean" &&
-            tilt.hover && [
-              "scale-90 hover:scale-100 transition-all duration-200 hover:drop-shadow-xl",
-              tilt.invert ? "hover:rotate-1" : "hover:-rotate-1",
-            ],
+            tilt.hover &&
+            "hover:rotate-0 hover:scale-110 transition-all duration-200 hover:drop-shadow-xl",
         ],
         className
       )}
@@ -45,6 +44,11 @@ function Polaroid({ tape, tilt, image, content, className }: Props) {
         <Image src={image} width="100%" height="100%" alt="Polaroid" />
       ) : null}
       {content ? <figcaption className="mt-2">{content}</figcaption> : null}
+      {soldOut ? (
+        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 font-topSecret text-red-500 text-5xl">
+          VENDU!
+        </span>
+      ) : null}
     </figure>
   );
 }
@@ -55,6 +59,7 @@ Polaroid.defaultProps = {
   tape: false,
   tilt: false,
   className: "",
+  soldOut: false,
 };
 
 export default Polaroid;

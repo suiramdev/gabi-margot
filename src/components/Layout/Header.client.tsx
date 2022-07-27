@@ -66,7 +66,7 @@ function Header({ collections }: Props) {
         </Link>
         {collections.map((collection) => (
           <Link
-            to={collection.handle}
+            to={`/collections/${collection.handle}`}
             className={clsx(
               "hover:text-primary hover:no-underline",
               collection.handle === handle && "text-primary font-bold"

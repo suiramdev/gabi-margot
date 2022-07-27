@@ -38,7 +38,7 @@ function Home() {
           <Suspense fallback={null}>
             {collections.map((collection, k) => (
               <Link
-                to="/collection/{collection.handle}"
+                to={`/collections/${collection.handle}`}
                 className="hover:no-underline"
                 key={collection.id}
               >
