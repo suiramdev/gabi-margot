@@ -44,7 +44,7 @@ function NavMenu({ collections }: Props) {
       </Link>
       {collections.map((collection) => (
         <Link
-          to={collection.handle}
+          to={`/collections/${collection.handle}`}
           className={clsx(
             "flex justify-center items-center px-10 py-5 bg-default-300 text-center hover:text-primary hover:no-underline",
             handle === collection.handle && "font-bold text-primary"

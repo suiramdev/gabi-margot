@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaShoppingBasket, FaTiktok } from "react-icons/fa";
+import { FaFacebookF, FaShoppingBasket, FaTiktok, FaLock } from "react-icons/fa";
 import {
   AiFillInstagram,
   AiFillEnvironment,
@@ -38,4 +38,8 @@ export function Location({ className }: IconProps) {
 
 export function Menu({ className }: IconProps) {
   return <AiOutlineMenu className={className} />;
+}
+
+export function Lock({ className }: IconProps) {
+  return <FaLock className={className} />;
 }

@@ -3,16 +3,19 @@ import clsx from "clsx";
 
 type Props = {
   children: React.ReactNode;
+  outline?: boolean;
   className?: string;
 };
 
-function Button({ children, className }: Props) {
+function Button({ children, outline, className }: Props) {
   return (
     <button
       type="button"
       className={clsx(
-        "px-8 py-4 bg-primary text-white rounded-2xl",
-        "hover:bg-primary-darken transition-colors",
+        "px-8 py-4 bg-primary rounded-2xl font-serif transition-colors",
+        outline
+          ? "bg-transparent hover:bg-primary/20 text-primary outline outline-primary outline-2"
+          : "bg-primary hover:bg-primary-darken text-white",
         className
       )}
     >
@@ -23,6 +26,7 @@ function Button({ children, className }: Props) {
 
 Button.defaultProps = {
   className: undefined,
+  outline: false,
 };
 
 export default Button;

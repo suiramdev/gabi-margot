@@ -5,6 +5,7 @@ import Layout from "../../components/Layout/Layout.server";
 import COLLECTION_QUERY from "../../queries/Collection";
 import NotFound from "../../components/NotFound.server";
 import Polaroid from "../../components/Polaroid";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 function Policy({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -28,17 +29,18 @@ function Policy({ params }: HydrogenRouteProps) {
     <Layout>
       <section className="min-h-screen py-24 px-32">
         <Suspense fallback={null}>
-          <div className="mb-8 flex gap-1 text-neutral-400">
-            <Link to="/">Accueil</Link>
-            <span>&gt;</span>
-            <span>{collection.title}</span>
-          </div>
+          <Breadcrumbs
+            locations={[
+              { name: "Accueil", to: "/" },
+              { name: collection.title },
+            ]}
+          />
         </Suspense>
         <Suspense fallback={null}>
           <h1 className="mb-12">{collection.title}</h1>
         </Suspense>
         <Suspense fallback={null}>
-          <div className="flex gap-12 flex-wrap">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-12 flex-wrap">
             {products.map((product, k) => (
               <Link
                 to={`/products/${product.handle}`}

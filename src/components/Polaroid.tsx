@@ -24,7 +24,7 @@ function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
   return (
     <figure
       className={clsx(
-        "relative w-[200px] h-fit px-[8px] py-[10px] bg-[#eee6d8] drop-shadow-md",
+        "w-[200px] h-fit px-[8px] py-[10px] bg-[#eee6d8] drop-shadow-md",
         tape && [
           "before:content-[''] before:absolute before:w-[75px] before:h-[30px] before:top-[-10px] before:bg-[#DEDCC6]/80 before:-rotate-12",
           typeof tape !== "boolean" && tape.invert
@@ -32,10 +32,10 @@ function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
             : "before:right-[5px] before:-rotate-12",
         ],
         tilt && [
-          typeof tilt !== "boolean" && tilt.invert ? "rotate-2" : "-rotate-2",
+          typeof tilt !== "boolean" && tilt.invert ? "-skew-y-2" : "skew-y-2",
           typeof tilt !== "boolean" &&
             tilt.hover &&
-            "hover:rotate-0 hover:scale-110 transition-all duration-200 hover:drop-shadow-xl",
+            "hover:skew-y-0 hover:rotate-0 hover:scale-110 transition-all duration-200 hover:drop-shadow-xl",
         ],
         className
       )}

@@ -5,10 +5,11 @@ const COLLECTION_QUERY = gql`
     collection(handle: $handle) {
       id
       title
-      products(first: 10) {
+      products(first: 50) {
         edges {
           node {
             id
+            handle
             title
             availableForSale
             images(first: 1) {

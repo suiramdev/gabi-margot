@@ -14,6 +14,7 @@
     "@shopify/cli-hydrogen": "3.0.27",
     "@tailwindcss/typography": "^0.5.3",
     "@types/react": "^18.0.9",
+    "@types/swiper": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "autoprefixer": "^10.4.7",
@@ -35,7 +36,8 @@
     "eslint-plugin-hydrogen": "^0.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "swiper": "^8.3.2"
   },
   "author": "suiramdev"
 }
