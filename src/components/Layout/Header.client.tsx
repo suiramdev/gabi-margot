@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, Link, useRouteParams } from "@shopify/hydrogen";
-import type { Collection } from "@shopify/hydrogen/storefront-api-types";
+import type { MenuItem } from "@shopify/hydrogen/storefront-api-types";
 import clsx from "clsx";
 import {
   FacebookF,
@@ -12,10 +12,10 @@ import {
 import { NavMenuContext } from "../../providers/NavMenuProvider.client";
 
 type Props = {
-  collections: Collection[];
+  items: MenuItem[];
 };
 
-function Header({ collections }: Props) {
+function Header({ items }: Props) {
   const { handle } = useRouteParams();
   const [showNavMenu, setNavMenu] = React.useContext(NavMenuContext);
 
@@ -55,27 +55,22 @@ function Header({ collections }: Props) {
         </div>
       </div>
       <div className="hidden lg:flex flex-wrap justify-center items-center gap-8 py-2 bg-default-200">
-        <Link
-          to="/"
-          className={clsx(
-            "hover:text-primary hover:no-underline",
-            !handle && "text-primary font-bold"
-          )}
-        >
-          Accueil
-        </Link>
-        {collections.map((collection) => (
-          <Link
-            to={`/collections/${collection.handle}`}
-            className={clsx(
-              "hover:text-primary hover:no-underline",
-              collection.handle === handle && "text-primary font-bold"
-            )}
-            key={collection.id}
-          >
-            {collection.title}
-          </Link>
-        ))}
+        {items.map((item) => {
+          const { pathname } = new URL(item.url || "");
+          return (
+            <Link
+              to={`${pathname}`}
+              className={clsx(
+                "hover:text-primary hover:no-underline",
+                pathname.split("/").pop() === (handle || "") &&
+                  "text-primary font-bold"
+              )}
+              key={item.id}
+            >
+              {item.title}
+            </Link>
+          );
+        })}
       </div>
     </>
   );

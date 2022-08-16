@@ -1,15 +1,15 @@
 import React from "react";
 import { Image, Link, useRouteParams } from "@shopify/hydrogen";
-import type { Collection } from "@shopify/hydrogen/storefront-api-types";
+import type { MenuItem } from "@shopify/hydrogen/storefront-api-types";
 import clsx from "clsx";
 import { NavMenuContext } from "../../providers/NavMenuProvider.client";
 import { ShoppingBasket } from "./Icons.client";
 
 type Props = {
-  collections: Collection[];
+  items: MenuItem[];
 };
 
-function NavMenu({ collections }: Props) {
+function NavMenu({ items }: Props) {
   const { handle } = useRouteParams();
   const [show] = React.useContext(NavMenuContext);
 
@@ -33,27 +33,23 @@ function NavMenu({ collections }: Props) {
           <ShoppingBasket />
         </button>
       </div>
-      <Link
-        to="/"
-        className={clsx(
-          "flex justify-center items-center px-10 py-5 bg-default-300 text-center hover:text-primary hover:no-underline",
-          !handle && "font-bold text-primary"
-        )}
-      >
-        Accueil
-      </Link>
-      {collections.map((collection) => (
-        <Link
-          to={`/collections/${collection.handle}`}
-          className={clsx(
-            "flex justify-center items-center px-10 py-5 bg-default-300 text-center hover:text-primary hover:no-underline",
-            handle === collection.handle && "font-bold text-primary"
-          )}
-          key={collection.id}
-        >
-          {collection.title}
-        </Link>
-      ))}
+      {items.map((item) => {
+        const { pathname } = new URL(item.url || "");
+
+        return (
+          <Link
+            to={`${pathname}`}
+            className={clsx(
+              "flex justify-center items-center px-10 py-5 bg-default-300 text-center hover:text-primary hover:no-underline",
+              pathname.split("/").pop() === (handle || "") &&
+                "font-bold text-primary"
+            )}
+            key={item.id}
+          >
+            {item.title}
+          </Link>
+        );
+      })}
     </div>
   );
 }

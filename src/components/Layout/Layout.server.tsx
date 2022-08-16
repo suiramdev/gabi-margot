@@ -1,13 +1,12 @@
 import React from "react";
 import { useShopQuery } from "@shopify/hydrogen";
-import type { Collection } from "@shopify/hydrogen/storefront-api-types";
 import Header from "./Header.client";
 import Noise from "./Noise.client";
 import Footer from "./Footer/Footer.client";
 import MobileNav from "./NavMenu.client";
 import NavProvider from "../../providers/NavMenuProvider.client";
 import Content from "./Content.client";
-import COLLECTIONS_QUERY from "../../queries/Collections";
+import MENU_QUERY from "../../queries/Menu";
 
 type Props = {
   children: React.ReactNode;
@@ -15,18 +14,15 @@ type Props = {
 
 function Layout({ children }: Props) {
   const { data } = useShopQuery<any>({
-    query: COLLECTIONS_QUERY,
-    preload: true,
+    query: MENU_QUERY,
   });
-
-  const collections: Collection[] = data.collections.nodes;
 
   return (
     <Noise>
       <NavProvider>
-        <MobileNav collections={collections} />
+        <MobileNav items={data.menu.items} />
         <Content>
-          <Header collections={collections} />
+          <Header items={data.menu.items} />
           {children}
           <Footer />
         </Content>
