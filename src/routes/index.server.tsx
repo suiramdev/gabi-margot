@@ -35,7 +35,7 @@ function Home() {
       <section className="flex flex-col items-center py-20">
         <h2 className="mb-12">Nos Produits</h2>
         <div className="flex-1">
-          <div className="mx-auto justify-center md:justify-start flex flex-wrap gap-12">
+          <div className="mx-auto justify-center flex flex-wrap gap-12">
             <Suspense fallback={null}>
               {collections.map((collection, k) => (
                 <Link
