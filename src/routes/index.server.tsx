@@ -34,28 +34,30 @@ function Home() {
       </section>
       <section className="flex flex-col items-center py-20">
         <h2 className="mb-12">Nos Produits</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12">
-          <Suspense fallback={null}>
-            {collections.map((collection, k) => (
-              <Link
-                to={`/collections/${collection.handle}`}
-                className="hover:no-underline"
-                key={collection.id}
-              >
-                <Polaroid
-                  image={collection.image?.url}
-                  content={collection.title}
-                  tape={{
-                    invert: k % 2 === 0,
-                  }}
-                  tilt={{
-                    hover: true,
-                    invert: k % 2 === 0,
-                  }}
-                />
-              </Link>
-            ))}
-          </Suspense>
+        <div className="flex-1">
+          <div className="mx-auto justify-center md:justify-start flex flex-wrap gap-12">
+            <Suspense fallback={null}>
+              {collections.map((collection, k) => (
+                <Link
+                  to={`/collections/${collection.handle}`}
+                  className="hover:no-underline"
+                  key={collection.id}
+                >
+                  <Polaroid
+                    image={collection.image?.url}
+                    content={collection.title}
+                    tape={{
+                      invert: k % 2 === 0,
+                    }}
+                    tilt={{
+                      hover: true,
+                      invert: k % 2 === 0,
+                    }}
+                  />
+                </Link>
+              ))}
+            </Suspense>
+          </div>
         </div>
       </section>
     </Layout>
