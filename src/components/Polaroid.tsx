@@ -24,7 +24,7 @@ function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
   return (
     <figure
       className={clsx(
-        "w-[200px] h-fit px-[8px] py-[10px] bg-[#eee6d8] drop-shadow-md",
+        "px-[8px] py-[10px] bg-[#eee6d8] drop-shadow-md",
         tape && [
           "before:content-[''] before:absolute before:w-[75px] before:h-[30px] before:top-[-10px] before:bg-[#DEDCC6]/80 before:-rotate-12",
           typeof tape !== "boolean" && tape.invert
@@ -41,7 +41,14 @@ function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
       )}
     >
       {image ? (
-        <Image src={image} width="100%" height="100%" alt="Polaroid" />
+        // The weird thing, is that height is set to auto by default.
+        <Image
+          src={image}
+          width="100%"
+          height="100%"
+          alt="Polaroid"
+          className="w-[200px] h-[200px] mx-auto object-cover"
+        />
       ) : null}
       {content ? <figcaption className="mt-2">{content}</figcaption> : null}
       {soldOut ? (
