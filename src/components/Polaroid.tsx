@@ -24,7 +24,7 @@ function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
   return (
     <figure
       className={clsx(
-        "px-[8px] py-[10px] bg-[#eee6d8] drop-shadow-md",
+        "flex flex-col w-[200px] h-[230px] px-[8px] py-[10px] bg-[#eee6d8] drop-shadow-md",
         tape && [
           "before:content-[''] before:absolute before:w-[75px] before:h-[30px] before:top-[-10px] before:bg-[#DEDCC6]/80 before:-rotate-12",
           typeof tape !== "boolean" && tape.invert
@@ -47,7 +47,7 @@ function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
           width="100%"
           height="100%"
           alt="Polaroid"
-          className="w-[200px] h-[200px] mx-auto object-cover"
+          className="h-full object-cover"
         />
       ) : null}
       {content ? <figcaption className="mt-2">{content}</figcaption> : null}

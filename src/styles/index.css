@@ -35,6 +35,10 @@
     }
 }
 
+.swiper {
+    @apply w-[50%] !overflow-visible;
+}
+
 .swiper-pagination-bullets {
     @apply w-full h-full mt-8 flex justify-center items-center gap-2;
 }

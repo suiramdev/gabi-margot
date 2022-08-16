@@ -45,6 +45,7 @@ function Policy({ params }: HydrogenRouteProps) {
                   tape={{
                     invert: index % 2 === 0,
                   }}
+                  className="w-full h-fit"
                 />
               ))}
             </PolaroidCarousel>
