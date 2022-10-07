@@ -40,7 +40,7 @@ function Policy({ params }: HydrogenRouteProps) {
           <h1 className="mb-12">{collection.title}</h1>
         </Suspense>
         <Suspense fallback={null}>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-12 flex-wrap">
+          <div className="grid grid-flow-col auto-cols-max gap-12 flex-wrap">
             {products.map((product, k) => (
               <Link
                 to={`/products/${product.handle}`}

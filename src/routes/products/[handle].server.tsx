@@ -46,6 +46,7 @@ function Policy({ params }: HydrogenRouteProps) {
                     invert: index % 2 === 0,
                   }}
                   className="w-full h-fit"
+                  imageClassName="w-full h-full"
                 />
               ))}
             </PolaroidCarousel>

@@ -17,6 +17,7 @@ type Props = {
   tape?: Tape | boolean;
   tilt?: Tilt | boolean;
   className?: string;
+  imageClassName?: string;
   soldOut?: boolean;
 };
 
@@ -24,7 +25,7 @@ function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
   return (
     <figure
       className={clsx(
-        "flex flex-col w-[200px] h-[230px] px-[8px] py-[10px] bg-[#eee6d8] drop-shadow-md",
+        "h-[280px] aspect-square px-[8px] py-[10px] bg-[#eee6d8] drop-shadow-md",
         tape && [
           "before:content-[''] before:absolute before:w-[75px] before:h-[30px] before:top-[-10px] before:bg-[#DEDCC6]/80 before:-rotate-12",
           typeof tape !== "boolean" && tape.invert
@@ -47,10 +48,12 @@ function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
           width="100%"
           height="100%"
           alt="Polaroid"
-          className="h-full object-cover"
+          className="h-full aspect-square object-cover"
         />
       ) : null}
-      {content ? <figcaption className="mt-2">{content}</figcaption> : null}
+      {content ? (
+        <figcaption className="mt-2">{content}</figcaption>
+      ) : null}
       {soldOut ? (
         <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 font-topSecret text-red-500 text-5xl">
           VENDU!
