@@ -27,7 +27,7 @@ function Policy({ params }: HydrogenRouteProps) {
 
   return (
     <Layout>
-      <section className="min-h-screen py-24 px-32">
+      <section className="min-h-screen px-4 py-24 sm:px-16 md:px-32">
         <Suspense fallback={null}>
           <Breadcrumbs
             locations={[
@@ -40,7 +40,7 @@ function Policy({ params }: HydrogenRouteProps) {
           <h1 className="mb-12">{collection.title}</h1>
         </Suspense>
         <Suspense fallback={null}>
-          <div className="grid grid-flow-col auto-cols-max gap-12 flex-wrap">
+          <div className="flex-wrap grid grid-flow-col auto-cols-max gap-12">
             {products.map((product, k) => (
               <Link
                 to={`/products/${product.handle}`}
