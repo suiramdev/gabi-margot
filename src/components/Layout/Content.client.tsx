@@ -13,7 +13,7 @@ function Content({ children }: Props) {
     <div
       className={clsx(
         "transition-transform lg:translate-x-0",
-        showNavMenu && "translate-x-1/2"
+        showNavMenu && "translate-x-[70%]"
       )}
     >
       {children}

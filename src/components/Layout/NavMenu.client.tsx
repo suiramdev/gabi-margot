@@ -16,7 +16,7 @@ function NavMenu({ items }: Props) {
   return (
     <div
       className={clsx(
-        "fixed top-0 left-0 w-1/2 h-screen flex lg:hidden flex-col gap-4 bg-default-200 shadow-inner transition-transform",
+        "fixed top-0 left-0 w-[70%] h-screen flex lg:hidden flex-col gap-4 bg-default-200 shadow-inner transition-transform",
         show ? "translate-x-0" : "-translate-x-full"
       )}
     >
