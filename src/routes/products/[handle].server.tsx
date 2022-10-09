@@ -9,7 +9,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import Polaroid from "../../components/Polaroid";
 import Button from "../../components/Button.client";
 import { Lock } from "../../components/Layout/Icons.client";
-import PolaroidCarousel from "../../components/PolaroidCarousel.client";
+import Carousel from "../../components/Carousel/Carousel.client";
 
 function Policy({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -31,13 +31,13 @@ function Policy({ params }: HydrogenRouteProps) {
 
   return (
     <Layout>
-      <section className="min-h-screen py-24 px-32">
+      <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
         <Breadcrumbs
           locations={[{ name: "Accueil", to: "/" }, { name: product.title }]}
         />
         <div className="grid lg:grid-cols-[45%_100%] gap-12">
           <div>
-            <PolaroidCarousel>
+            <Carousel>
               {images.map((image, index) => (
                 <Polaroid
                   image={image.url}
@@ -45,11 +45,10 @@ function Policy({ params }: HydrogenRouteProps) {
                   tape={{
                     invert: index % 2 === 0,
                   }}
-                  className="w-full h-fit"
-                  imageClassName="w-full h-full"
+                  imageClassName="h-[250px] lg:h-[380px]"
                 />
               ))}
-            </PolaroidCarousel>
+            </Carousel>
           </div>
           <div className="flex flex-col gap-8">
             <div>

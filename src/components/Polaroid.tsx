@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Image } from "@shopify/hydrogen";
+import {Image} from "@shopify/hydrogen";
 
 type Tape = {
   invert?: boolean;
@@ -21,7 +21,7 @@ type Props = {
   soldOut?: boolean;
 };
 
-function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
+function Polaroid({tape, tilt, image, content, className, imageClassName, soldOut}: Props) {
   return (
     <figure
       className={clsx(
@@ -35,8 +35,8 @@ function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
         tilt && [
           typeof tilt !== "boolean" && tilt.invert ? "-skew-y-2" : "skew-y-2",
           typeof tilt !== "boolean" &&
-            tilt.hover &&
-            "hover:skew-y-0 hover:rotate-0 hover:scale-110 transition-all duration-200 hover:drop-shadow-xl",
+          tilt.hover &&
+          "hover:skew-y-0 hover:rotate-0 hover:scale-110 transition-all duration-200 hover:drop-shadow-xl",
         ],
         className
       )}
@@ -48,14 +48,16 @@ function Polaroid({ tape, tilt, image, content, className, soldOut }: Props) {
           width="100%"
           height="100%"
           alt="Polaroid"
-          className="h-[175px] lg:h-[280px] aspect-square bject-cover"
+          className={clsx(
+            "h-[175px] lg:h-[280px] aspect-square object-cover",
+            imageClassName
+          )}
         />
       ) : null}
-      {content ? (
-        <figcaption className="mt-2">{content}</figcaption>
-      ) : null}
+      {content ? <figcaption className="mt-2">{content}</figcaption> : null}
       {soldOut ? (
-        <span className="absolute text-5xl text-red-500 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 font-topSecret">
+        <span
+          className="absolute text-5xl text-red-500 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 font-topSecret">
           VENDU!
         </span>
       ) : null}

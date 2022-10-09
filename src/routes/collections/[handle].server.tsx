@@ -27,7 +27,7 @@ function Policy({ params }: HydrogenRouteProps) {
 
   return (
     <Layout>
-      <section className="min-h-screen px-4 py-24 sm:px-16 md:px-32">
+      <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
         <Suspense fallback={null}>
           <Breadcrumbs
             locations={[
