@@ -9,7 +9,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import Polaroid from "../../components/Polaroid";
 import Button from "../../components/Button.client";
 import { Lock } from "../../components/Layout/Icons.client";
-import Carousel from "../../components/Carousel/Carousel.client";
+import CardCarousel from "../../components/Carousel/CardCarousel.client";
 
 function Policy({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -36,21 +36,19 @@ function Policy({ params }: HydrogenRouteProps) {
           locations={[{ name: "Accueil", to: "/" }, { name: product.title }]}
         />
         <div className="grid lg:grid-cols-[45%_100%] gap-12">
-          <div>
-            <Carousel>
-              {images.map((image, index) => (
-                <Polaroid
-                  image={image.url}
-                  key={image.id}
-                  tape={{
-                    invert: index % 2 === 0,
-                  }}
-                  imageClassName="h-[250px] lg:h-[380px]"
-                />
-              ))}
-            </Carousel>
-          </div>
-          <div className="flex flex-col gap-8">
+          <CardCarousel>
+            {images.map((image, index) => (
+              <Polaroid
+                imageClassName="!w-full !h-full"
+                image={image.url}
+                key={image.id}
+                tape={{
+                  invert: index % 2 === 0,
+                }}
+              />
+            ))}
+          </CardCarousel>
+          <div className="flex flex-col justify-center gap-8">
             <div>
               <h1 className="mb-2">{product.title}</h1>
               <span className="text-2xl text-primary font-bold">30.00 €</span>
