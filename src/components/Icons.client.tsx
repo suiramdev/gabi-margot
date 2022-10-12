@@ -5,6 +5,7 @@ import {
   FaTiktok,
   FaLock,
   FaTimes,
+  FaChevronLeft,
 } from "react-icons/fa";
 import {
   AiFillInstagram,
@@ -52,4 +53,8 @@ export function Lock({ className }: IconProps) {
 
 export function Cross({ className }: IconProps) {
   return <FaTimes className={className} />;
+}
+
+export function ChevronLeft({ className }: IconProps) {
+  return <FaChevronLeft className={className} />;
 }

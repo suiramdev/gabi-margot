@@ -8,6 +8,7 @@ import {
 } from "@shopify/hydrogen";
 import { CartContext } from "../../../providers/CartProvider.client";
 import CartItem from "./CartItem.client";
+import { ChevronLeft } from "../../Icons.client";
 
 function Cart() {
   const [show, setShow] = React.useContext(CartContext);
@@ -30,7 +31,16 @@ function Cart() {
           show ? "translate-x-0" : "translate-x-full"
         )}
       >
-        <h2 className="my-5">Panier</h2>
+        <div className="flex justify-between items-center my-5">
+          <h2>Panier</h2>
+          <button
+            type="button"
+            className="text-2xl"
+            onClick={() => setShow(false)}
+          >
+            <ChevronLeft />
+          </button>
+        </div>
         <div className="flex-1 flex flex-col">
           <CartLines>
             <CartItem />
