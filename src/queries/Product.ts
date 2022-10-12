@@ -15,6 +15,37 @@ const PRODUCT_QUERY = gql`
           }
         }
       }
+      variants(first: 100) {
+        nodes {
+          id
+          availableForSale
+          compareAtPriceV2 {
+            amount
+            currencyCode
+          }
+          selectedOptions {
+            name
+            value
+          }
+          image {
+            id
+            url
+            altText
+            width
+            height
+          }
+          priceV2 {
+            amount
+            currencyCode
+          }
+          sku
+          title
+          unitPrice {
+            amount
+            currencyCode
+          }
+        }
+      }
     }
   }
 `;

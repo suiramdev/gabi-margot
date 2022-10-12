@@ -8,8 +8,9 @@ import {
   Menu,
   ShoppingBasket,
   Tiktok,
-} from "./Icons.client";
+} from "../Icons.client";
 import { NavMenuContext } from "../../providers/NavMenuProvider.client";
+import { CartContext } from "../../providers/CartProvider.client";
 
 type Props = {
   items: MenuItem[];
@@ -18,6 +19,7 @@ type Props = {
 function Header({ items }: Props) {
   const { handle } = useRouteParams();
   const [showNavMenu, setNavMenu] = React.useContext(NavMenuContext);
+  const [cartShown, showCart] = React.useContext(CartContext);
 
   return (
     <>
@@ -49,7 +51,7 @@ function Header({ items }: Props) {
           />
         </Link>
         <div className="hidden lg:flex flex-1 justify-end gap-4">
-          <button type="button">
+          <button type="button" onClick={() => showCart(!cartShown)}>
             <ShoppingBasket />
           </button>
         </div>

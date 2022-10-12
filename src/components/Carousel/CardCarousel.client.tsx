@@ -49,7 +49,6 @@ function CardCarousel({ children }: Props) {
             <animated.div
               className="absolute"
               style={styles[index]}
-              onClick={nextSlide}
               key={index}
             >
               {node}

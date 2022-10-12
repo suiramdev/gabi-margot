@@ -1,5 +1,11 @@
 import React from "react";
-import { FaFacebookF, FaShoppingBasket, FaTiktok, FaLock } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaShoppingBasket,
+  FaTiktok,
+  FaLock,
+  FaTimes,
+} from "react-icons/fa";
 import {
   AiFillInstagram,
   AiFillEnvironment,
@@ -42,4 +48,8 @@ export function Menu({ className }: IconProps) {
 
 export function Lock({ className }: IconProps) {
   return <FaLock className={className} />;
+}
+
+export function Cross({ className }: IconProps) {
+  return <FaTimes className={className} />;
 }

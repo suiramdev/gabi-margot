@@ -3,7 +3,8 @@ import { Image, Link, useRouteParams } from "@shopify/hydrogen";
 import type { MenuItem } from "@shopify/hydrogen/storefront-api-types";
 import clsx from "clsx";
 import { NavMenuContext } from "../../providers/NavMenuProvider.client";
-import { ShoppingBasket } from "./Icons.client";
+import { ShoppingBasket } from "../Icons.client";
+import { CartContext } from "../../providers/CartProvider.client";
 
 type Props = {
   items: MenuItem[];
@@ -12,6 +13,7 @@ type Props = {
 function NavMenu({ items }: Props) {
   const { handle } = useRouteParams();
   const [show] = React.useContext(NavMenuContext);
+  const [cartShown, showCart] = React.useContext(CartContext);
 
   return (
     <div
@@ -29,7 +31,7 @@ function NavMenu({ items }: Props) {
             alt="Website's logo"
           />
         </Link>
-        <button type="button">
+        <button type="button" onClick={() => showCart(!cartShown)}>
           <ShoppingBasket />
         </button>
       </div>

@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { useShopQuery, Link } from "@shopify/hydrogen";
 import { Collection } from "@shopify/hydrogen/storefront-api-types";
 import Layout from "../components/Layout/Layout.server";
-import Button from "../components/Button.client";
 import Polaroid from "../components/Polaroid";
 import COLLECTIONS_QUERY from "../queries/Collections";
 
@@ -29,7 +28,9 @@ function Home() {
             tristique orci justo et mauris. Orci varius natoque penatibus et
             magnis dis parturient montes, nascetur ridiculus mus.
           </p>
-          <Button className="w-fit mt-8">Passer aux achats</Button>
+          <button type="button" className="btn w-fit mt-8">
+            Passer aux achats
+          </button>
         </div>
       </section>
       <section className="flex flex-col items-center py-20">

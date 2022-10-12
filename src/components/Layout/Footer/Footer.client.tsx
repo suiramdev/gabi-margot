@@ -7,7 +7,7 @@ import {
   Tiktok,
   Phone,
   Location,
-} from "../Icons.client";
+} from "../../Icons.client";
 
 function Footer() {
   return (
