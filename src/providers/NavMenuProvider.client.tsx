@@ -8,9 +8,10 @@ type Props = {
 
 function NavMenuProvider({ children }: Props) {
   const [context, setContext] = React.useState<boolean>(false);
+  const contextMemo = React.useMemo(() => [context, setContext], [context]);
 
   return (
-    <NavMenuContext.Provider value={[context, setContext]}>
+    <NavMenuContext.Provider value={contextMemo}>
       {children}
     </NavMenuContext.Provider>
   );
