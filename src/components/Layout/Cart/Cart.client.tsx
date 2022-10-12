@@ -11,7 +11,7 @@ import CartItem from "./CartItem.client";
 
 function Cart() {
   const [show, setShow] = React.useContext(CartContext);
-  const { cost } = useCart();
+  const { cost, lines } = useCart();
 
   return (
     <>
@@ -55,7 +55,7 @@ function Cart() {
           <CartCost className="font-bold text-3xl" amountType="total" />
         </div>
         <div className="flex flex-col gap-2">
-          <CartCheckoutButton className="btn">
+          <CartCheckoutButton className="btn" disabled={lines.length <= 0}>
             Passer la commande
           </CartCheckoutButton>
           <span className="text-center">
