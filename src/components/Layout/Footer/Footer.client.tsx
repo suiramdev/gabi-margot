@@ -26,10 +26,13 @@ function Footer() {
             <Location className="text-2xl" />
             Château-Gontier, Mayenne
           </span>
-          <span className="flex justify-center lg:justify-start gap-2">
+          <a
+            className="flex justify-center lg:justify-start gap-2"
+            href="tel:+336 09 66 33 75"
+          >
             <Phone className="text-2xl" />
             (+33) 6 09 66 33 75
-          </span>
+          </a>
         </FooterSection>
         <FooterSection title="Autres pages">
           <Link to="/about-us">Qui sommes nous ?</Link>
