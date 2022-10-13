@@ -27,7 +27,7 @@ function Cart() {
       <div
         className={clsx(
           "w-[450px] h-full fixed right-0 p-8 flex flex-col",
-          "bg-default transition-transform z-50",
+          "bg-default shadow-[-8px_0px_8px_rgba(0,0,0,0.2)] transition-transform z-50",
           show ? "translate-x-0" : "translate-x-full"
         )}
       >
