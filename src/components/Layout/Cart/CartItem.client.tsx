@@ -3,6 +3,8 @@ import {
   CartLineImage,
   CartLinePrice,
   CartLineProductTitle,
+  CartLineQuantity,
+  CartLineQuantityAdjustButton,
   useCart,
   useCartLine,
 } from "@shopify/hydrogen";
@@ -30,7 +32,26 @@ function CartItem() {
             <Cross />
           </button>
         </div>
-        <CartLinePrice className="col-span-2 text-right" />
+        <div className="flex items-end">
+          <div className="w-fit flex border border-gray-300 rounded-md">
+            <CartLineQuantityAdjustButton
+              className="px-2 hover:bg-default-100"
+              adjust="decrease"
+            >
+              -
+            </CartLineQuantityAdjustButton>
+            <CartLineQuantity className="px-2 text-center border-l border-r border-gray-300" />
+            <CartLineQuantityAdjustButton
+              className="px-2 hover:bg-default-100"
+              adjust="increase"
+            >
+              +
+            </CartLineQuantityAdjustButton>
+          </div>
+        </div>
+        <div className="flex justify-end items-end">
+          <CartLinePrice className="text-right" />
+        </div>
       </div>
     </div>
   );

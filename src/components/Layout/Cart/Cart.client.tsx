@@ -46,7 +46,7 @@ function Cart() {
             <CartItem />
           </CartLines>
         </div>
-        <div className="flex flex-col gap-4 py-5 border-t-2 border-t-default-200 text-gray-400">
+        <div className="flex flex-col gap-4 py-5 border-t-2 border-gray-300 text-gray-400">
           <div className="flex justify-between items-center">
             <span>Sous-total</span>
             <CartCost amountType="subtotal" />
@@ -60,7 +60,7 @@ function Cart() {
             )}
           </div>
         </div>
-        <div className="flex justify-between items-center py-5 border-t-2 border-t-default-200">
+        <div className="flex justify-between items-center py-5 border-t-2 border-gray-300">
           <span className="font-semibold text-xl">Total</span>
           <CartCost className="font-bold text-3xl" amountType="total" />
         </div>
