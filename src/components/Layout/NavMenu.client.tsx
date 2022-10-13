@@ -18,12 +18,13 @@ function NavMenu({ items }: Props) {
   return (
     <div
       className={clsx(
-        "fixed top-0 left-0 w-[70%] h-screen flex lg:hidden flex-col gap-4 bg-default-200 shadow-inner transition-transform",
+        "w-[70%] h-screen fixed top-0 left-0 flex lg:hidden flex-col bg-default-200 transition-transform",
+        "after:absolute after:w-full after:h-full after:pointer-events-none after:shadow-[-9px_1px_22px_1px_rgba(0,0,0,0.1)_inset]",
         show ? "translate-x-0" : "-translate-x-full"
       )}
     >
       <div className="flex justify-between p-10 text-3xl">
-        <Link to="/" className="hidden md:block">
+        <Link to="/">
           <Image
             src="/assets/logo.svg"
             width={200}
@@ -35,23 +36,25 @@ function NavMenu({ items }: Props) {
           <ShoppingBasket />
         </button>
       </div>
-      {items.map((item) => {
-        const { pathname } = new URL(item.url || "");
+      <div className="flex flex-col gap-4">
+        {items.map((item) => {
+          const { pathname } = new URL(item.url || "");
 
-        return (
-          <Link
-            to={`${pathname}`}
-            className={clsx(
-              "flex justify-center items-center px-10 py-5 bg-default-300 text-center hover:text-primary hover:no-underline",
-              pathname.split("/").pop() === (handle || "") &&
-                "font-bold text-primary"
-            )}
-            key={item.id}
-          >
-            {item.title}
-          </Link>
-        );
-      })}
+          return (
+            <Link
+              to={`${pathname}`}
+              className={clsx(
+                "flex justify-center items-center px-10 py-5 bg-default-300 text-center hover:text-primary hover:no-underline",
+                pathname.split("/").pop() === (handle || "") &&
+                  "font-bold text-primary"
+              )}
+              key={item.id}
+            >
+              {item.title}
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }
