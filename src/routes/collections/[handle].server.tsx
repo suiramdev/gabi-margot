@@ -48,7 +48,6 @@ function Policy({ params }: HydrogenRouteProps) {
                 className="hover:no-underline"
               >
                 <Polaroid
-                  imageClassName="h-[270px] aspect-square"
                   image={product.images.edges[0].node.url}
                   content={product.title}
                   tape={{
