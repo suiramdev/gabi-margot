@@ -8,7 +8,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import ProductGrid from "../../components/Product/ProductGrid.client";
 import COLLECTIONS_QUERY from "../../queries/Collections";
 
-function Policy({ params }: HydrogenRouteProps) {
+function Collection({ params }: HydrogenRouteProps) {
   const { handle } = params;
 
   const {
@@ -66,4 +66,4 @@ export async function api(
   });
 }
 
-export default Policy;
+export default Collection;

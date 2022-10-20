@@ -10,7 +10,7 @@ import PRODUCT_QUERY from "../../queries/Product";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import ProductDetails from "../../components/Product/ProductDetails.client";
 
-function Policy({ params }: HydrogenRouteProps) {
+function Product({ params }: HydrogenRouteProps) {
   const { handle } = params;
 
   const {
@@ -41,4 +41,4 @@ function Policy({ params }: HydrogenRouteProps) {
   );
 }
 
-export default Policy;
+export default Product;
