@@ -1,8 +1,8 @@
 import { gql } from "@shopify/hydrogen";
 
 const COLLECTIONS_QUERY = gql`
-  query CollectionsQuery {
-    collections(first: 5) {
+  query CollectionsQuery($first: Int = 30, $endCursor: String) {
+    collections(first: $first, after: $endCursor) {
       nodes {
         id
         title
@@ -10,6 +10,10 @@ const COLLECTIONS_QUERY = gql`
         image {
           url
         }
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
       }
     }
   }

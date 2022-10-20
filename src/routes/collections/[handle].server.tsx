@@ -6,7 +6,6 @@ import COLLECTION_QUERY from "../../queries/Collection";
 import NotFound from "../../components/NotFound.server";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import ProductGrid from "../../components/Product/ProductGrid.client";
-import COLLECTIONS_QUERY from "../../queries/Collections";
 
 function Collection({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -29,6 +28,7 @@ function Collection({ params }: HydrogenRouteProps) {
           <Breadcrumbs
             locations={[
               { name: "Accueil", to: "/" },
+              { name: "Collections", to: "/collections/all" },
               { name: collection.title },
             ]}
           />
@@ -58,7 +58,7 @@ export async function api(
   const cursor = url.searchParams.get("cursor");
 
   return queryShop({
-    query: COLLECTIONS_QUERY,
+    query: COLLECTION_QUERY,
     variables: {
       handle,
       endCursor: cursor,

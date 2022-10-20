@@ -9,6 +9,9 @@ function Home() {
   const { data } = useShopQuery<any>({
     query: COLLECTIONS_QUERY,
     preload: true,
+    variables: {
+      first: 5,
+    },
   });
 
   const collections: Collection[] = data.collections.nodes;

@@ -1,13 +1,13 @@
 import React, { Suspense } from "react";
 import type {
+  CollectionConnection,
   Collection,
-  Product,
 } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@shopify/hydrogen";
 import Polaroid from "../Polaroid";
 
 type Props = {
-  collection: Collection;
+  collectionConnection: CollectionConnection;
   url: string;
 };
 
@@ -16,8 +16,8 @@ type PageInfo = {
   hasNextPage: boolean;
 };
 
-function ProductGrid({ collection, url }: Props) {
-  const [products, setProducts] = React.useState<Product[]>([]);
+function CollectionGrid({ collectionConnection, url }: Props) {
+  const [collections, setCollections] = React.useState<Collection[]>([]);
   const [pageInfo, setPageInfo] = React.useState<PageInfo>({
     endCursor: "",
     hasNextPage: false,
@@ -26,13 +26,13 @@ function ProductGrid({ collection, url }: Props) {
 
   React.useEffect(() => {
     setPageInfo(
-      (collection.products?.pageInfo as PageInfo) || {
+      (collectionConnection.pageInfo as PageInfo) || {
         endCursor: "",
         hasNextPage: false,
       }
     );
-    setProducts(collection.products?.nodes || []);
-  }, [collection]);
+    setCollections(collectionConnection.nodes || []);
+  }, [collectionConnection]);
 
   const loadMore = async () => {
     if (pending || !pageInfo.hasNextPage) return;
@@ -46,9 +46,9 @@ function ProductGrid({ collection, url }: Props) {
     });
     const { data } = await response.json();
 
-    const newProducts = data?.collection?.nodes || [];
+    const newCollections = data?.collection?.nodes || [];
 
-    setProducts([...products, ...newProducts]);
+    setCollections([...collections, ...newCollections]);
     setPageInfo(
       (data?.collection.pageInfo as PageInfo) || {
         endCursor: "",
@@ -62,15 +62,15 @@ function ProductGrid({ collection, url }: Props) {
     <>
       <div className="flex-wrap grid grid-flow-col auto-cols-max gap-12">
         <Suspense fallback={null}>
-          {products.map((product, index) => (
+          {collections.map((collection, index) => (
             <Link
-              to={`/products/${product.handle}`}
-              key={product.id}
+              to={`/collections/${collection.handle}`}
+              key={collection.id}
               className="hover:no-underline"
             >
               <Polaroid
-                image={product.images.edges[0].node.url}
-                content={product.title}
+                image={collection.image?.url}
+                content={collection.title}
                 tape={{
                   invert: index % 2 === 0,
                 }}
@@ -78,7 +78,6 @@ function ProductGrid({ collection, url }: Props) {
                   hover: true,
                   invert: index % 2 === 0,
                 }}
-                soldOut={!product.availableForSale}
               />
             </Link>
           ))}
@@ -95,4 +94,4 @@ function ProductGrid({ collection, url }: Props) {
   );
 }
 
-export default ProductGrid;
+export default CollectionGrid;
