@@ -31,9 +31,9 @@ function Home() {
             tristique orci justo et mauris. Orci varius natoque penatibus et
             magnis dis parturient montes, nascetur ridiculus mus.
           </p>
-          <button type="button" className="btn w-fit mt-8">
+          <Link to="/products/all" className="btn w-fit mt-8">
             Passer aux achats
-          </button>
+          </Link>
         </div>
       </section>
       <section className="flex flex-col items-center py-20">
