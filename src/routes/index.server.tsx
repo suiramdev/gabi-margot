@@ -1,20 +1,20 @@
 import React, { Suspense } from "react";
 import { useShopQuery, Link } from "@shopify/hydrogen";
-import { Collection } from "@shopify/hydrogen/storefront-api-types";
+import type { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
 import Layout from "../components/Layout/Layout.server";
 import Polaroid from "../components/Polaroid";
 import COLLECTIONS_QUERY from "../queries/Collections";
 
 function Home() {
-  const { data } = useShopQuery<any>({
+  const {
+    data: { collections },
+  } = useShopQuery<QueryRoot>({
     query: COLLECTIONS_QUERY,
     preload: true,
     variables: {
       first: 5,
     },
   });
-
-  const collections: Collection[] = data.collections.nodes;
 
   return (
     <Layout>
@@ -41,7 +41,7 @@ function Home() {
         <div className="flex-1">
           <div className="mx-auto justify-center flex flex-wrap gap-12">
             <Suspense fallback={null}>
-              {collections.map((collection, k) => (
+              {collections.nodes.map((collection, k) => (
                 <Link
                   to={`/collections/${collection.handle}`}
                   className="hover:no-underline"
