@@ -12,10 +12,8 @@ const COLLECTION_QUERY = gql`
           title
           availableForSale
           images(first: 1) {
-            edges {
-              node {
-                url
-              }
+            nodes {
+              url
             }
           }
         }

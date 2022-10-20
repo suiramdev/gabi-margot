@@ -8,11 +8,9 @@ const PRODUCT_QUERY = gql`
       availableForSale
       description
       images(first: 5) {
-        edges {
-          node {
-            id
-            url
-          }
+        nodes {
+          id
+          url
         }
       }
       variants(first: 100) {

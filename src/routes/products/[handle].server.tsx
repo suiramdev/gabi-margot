@@ -4,18 +4,19 @@ import {
   ProductOptionsProvider,
   useShopQuery,
 } from "@shopify/hydrogen";
+import type { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
 import Layout from "../../components/Layout/Layout.server";
 import NotFound from "../../components/NotFound.server";
 import PRODUCT_QUERY from "../../queries/Product";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import ProductDetails from "../../components/Product/ProductDetails.client";
 
-function Product({ params }: HydrogenRouteProps) {
+function ProductRoute({ params }: HydrogenRouteProps) {
   const { handle } = params;
 
   const {
     data: { product },
-  } = useShopQuery({
+  } = useShopQuery<QueryRoot>({
     query: PRODUCT_QUERY,
     variables: {
       handle,
@@ -28,7 +29,11 @@ function Product({ params }: HydrogenRouteProps) {
     <Layout>
       <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
         <Breadcrumbs
-          locations={[{ name: "Accueil", to: "/" }, { name: product.title }]}
+          locations={[
+            { name: "Accueil", to: "/" },
+            { name: "Produits", to: "/products/all" },
+            { name: product.title },
+          ]}
         />
         <ProductOptionsProvider data={product}>
           <ProductDetails product={product} />
@@ -41,4 +46,4 @@ function Product({ params }: HydrogenRouteProps) {
   );
 }
 
-export default Product;
+export default ProductRoute;

@@ -7,7 +7,7 @@ import { Link } from "@shopify/hydrogen";
 import Polaroid from "../Polaroid";
 
 type Props = {
-  collectionConnection: CollectionConnection;
+  initialData: CollectionConnection;
   url: string;
 };
 
@@ -16,7 +16,7 @@ type PageInfo = {
   hasNextPage: boolean;
 };
 
-function CollectionGrid({ collectionConnection, url }: Props) {
+function CollectionGrid({ initialData, url }: Props) {
   const [collections, setCollections] = React.useState<Collection[]>([]);
   const [pageInfo, setPageInfo] = React.useState<PageInfo>({
     endCursor: "",
@@ -26,13 +26,13 @@ function CollectionGrid({ collectionConnection, url }: Props) {
 
   React.useEffect(() => {
     setPageInfo(
-      (collectionConnection.pageInfo as PageInfo) || {
+      (initialData.pageInfo as PageInfo) || {
         endCursor: "",
         hasNextPage: false,
       }
     );
-    setCollections(collectionConnection.nodes || []);
-  }, [collectionConnection]);
+    setCollections(initialData.nodes || []);
+  }, [initialData]);
 
   const loadMore = async () => {
     if (pending || !pageInfo.hasNextPage) return;
@@ -46,11 +46,11 @@ function CollectionGrid({ collectionConnection, url }: Props) {
     });
     const { data } = await response.json();
 
-    const newCollections = data?.collection?.nodes || [];
+    const newCollections = data?.nodes || [];
 
     setCollections([...collections, ...newCollections]);
     setPageInfo(
-      (data?.collection.pageInfo as PageInfo) || {
+      (data?.pageInfo as PageInfo) || {
         endCursor: "",
         hasNextPage: false,
       }

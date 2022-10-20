@@ -8,7 +8,7 @@ import Layout from "../../components/Layout/Layout.server";
 import NotFound from "../../components/NotFound.server";
 import POLICIES_QUERY from "../../queries/Policies";
 
-function Policy({ params }: HydrogenRouteProps) {
+function PolicyRoute({ params }: HydrogenRouteProps) {
   const {
     language: { isoCode: languageCode },
   } = useLocalization();
@@ -60,4 +60,4 @@ function Policy({ params }: HydrogenRouteProps) {
   );
 }
 
-export default Policy;
+export default PolicyRoute;

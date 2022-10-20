@@ -5,11 +5,7 @@ import {
   ProductPrice,
   useProductOptions,
 } from "@shopify/hydrogen";
-import type {
-  Product,
-  Image,
-  ImageEdge,
-} from "@shopify/hydrogen/storefront-api-types";
+import type { Product } from "@shopify/hydrogen/storefront-api-types";
 import ProductGallery from "./ProductGallery.client";
 import { Lock } from "../Icons.client";
 import { CartContext } from "../../providers/CartProvider.client";
@@ -22,15 +18,11 @@ function ProductDetails({ product }: Props) {
   const { selectedVariant } = useProductOptions();
   const isOutOfStock = !selectedVariant?.availableForSale || false;
 
-  const images: Image[] = product.images.edges.map(
-    (edge: ImageEdge) => edge.node
-  );
-
   const [, showCart] = React.useContext(CartContext);
 
   return (
     <div className="grid lg:grid-cols-[45%_100%] gap-12">
-      <ProductGallery images={images} soldOut={isOutOfStock} />
+      <ProductGallery images={product.images.nodes} soldOut={isOutOfStock} />
       <div className="flex flex-col justify-center gap-8">
         <div>
           <h1 className="mb-2">{product.title}</h1>

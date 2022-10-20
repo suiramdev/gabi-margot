@@ -1,13 +1,13 @@
 import React, { Suspense } from "react";
 import type {
-  Collection,
   Product,
+  ProductConnection,
 } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@shopify/hydrogen";
 import Polaroid from "../Polaroid";
 
 type Props = {
-  collection: Collection;
+  initialData: ProductConnection;
   url: string;
 };
 
@@ -16,7 +16,7 @@ type PageInfo = {
   hasNextPage: boolean;
 };
 
-function ProductGrid({ collection, url }: Props) {
+function ProductGrid({ initialData, url }: Props) {
   const [products, setProducts] = React.useState<Product[]>([]);
   const [pageInfo, setPageInfo] = React.useState<PageInfo>({
     endCursor: "",
@@ -26,13 +26,13 @@ function ProductGrid({ collection, url }: Props) {
 
   React.useEffect(() => {
     setPageInfo(
-      (collection.products?.pageInfo as PageInfo) || {
+      (initialData.pageInfo as PageInfo) || {
         endCursor: "",
         hasNextPage: false,
       }
     );
-    setProducts(collection.products?.nodes || []);
-  }, [collection]);
+    setProducts(initialData.nodes || []);
+  }, [initialData]);
 
   const loadMore = async () => {
     if (pending || !pageInfo.hasNextPage) return;
@@ -46,11 +46,11 @@ function ProductGrid({ collection, url }: Props) {
     });
     const { data } = await response.json();
 
-    const newProducts = data?.collection?.nodes || [];
+    const newProducts = data?.nodes || [];
 
     setProducts([...products, ...newProducts]);
     setPageInfo(
-      (data?.collection.pageInfo as PageInfo) || {
+      (data?.pageInfo as PageInfo) || {
         endCursor: "",
         hasNextPage: false,
       }
@@ -69,7 +69,7 @@ function ProductGrid({ collection, url }: Props) {
               className="hover:no-underline"
             >
               <Polaroid
-                image={product.images.edges[0].node.url}
+                image={product.images.nodes[0].url}
                 content={product.title}
                 tape={{
                   invert: index % 2 === 0,

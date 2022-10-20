@@ -1,18 +1,19 @@
 import React, { Suspense } from "react";
 import { HydrogenRouteProps, useShopQuery } from "@shopify/hydrogen";
 import { RequestOptions } from "@shopify/hydrogen/utilities/apiRoutes";
+import type { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
 import Layout from "../../components/Layout/Layout.server";
 import COLLECTION_QUERY from "../../queries/Collection";
 import NotFound from "../../components/NotFound.server";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import ProductGrid from "../../components/Product/ProductGrid.client";
 
-function Collection({ params }: HydrogenRouteProps) {
+function CollectionRoute({ params }: HydrogenRouteProps) {
   const { handle } = params;
 
   const {
     data: { collection },
-  } = useShopQuery({
+  } = useShopQuery<QueryRoot>({
     query: COLLECTION_QUERY,
     variables: {
       handle,
@@ -36,7 +37,10 @@ function Collection({ params }: HydrogenRouteProps) {
         <Suspense fallback={null}>
           <h1 className="mb-12">{collection.title}</h1>
         </Suspense>
-        <ProductGrid collection={collection} url={`/collections/${handle}`} />
+        <ProductGrid
+          initialData={collection.products}
+          url={`/collections/${handle}`}
+        />
       </section>
     </Layout>
   );
@@ -57,13 +61,18 @@ export async function api(
   const url = new URL(request.url);
   const cursor = url.searchParams.get("cursor");
 
-  return queryShop({
+  const response = await queryShop<QueryRoot>({
     query: COLLECTION_QUERY,
     variables: {
       handle,
       endCursor: cursor,
     },
   });
+  if (!response.data.collection)
+    return new Response("Collection not found", { status: 404 });
+  return new Response(JSON.stringify(response.data.collection.products), {
+    headers: { "Content-Type": "application/json" },
+  });
 }
 
-export default Collection;
+export default CollectionRoute;

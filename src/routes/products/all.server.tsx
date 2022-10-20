@@ -1,30 +1,34 @@
-import React from "react";
-import { useShopQuery } from "@shopify/hydrogen";
+import React, { Suspense } from "react";
+import { HydrogenRouteProps, useShopQuery } from "@shopify/hydrogen";
 import { RequestOptions } from "@shopify/hydrogen/utilities/apiRoutes";
 import type { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
 import Layout from "../../components/Layout/Layout.server";
-import NotFound from "../../components/NotFound.server";
+import PRODUCTS_QUERY from "../../queries/Products";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import COLLECTIONS_QUERY from "../../queries/Collections";
-import CollectionGrid from "../../components/Collection/CollectionGrid.client";
+import ProductGrid from "../../components/Product/ProductGrid.client";
 
-function CollectionsRoute() {
+function ProductsRoute({ params }: HydrogenRouteProps) {
+  const { handle } = params;
+
   const {
-    data: { collections },
+    data: { products },
   } = useShopQuery<QueryRoot>({
-    query: COLLECTIONS_QUERY,
+    query: PRODUCTS_QUERY,
+    variables: {
+      handle,
+    },
   });
-
-  if (!collections) return <NotFound />;
 
   return (
     <Layout>
       <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
-        <Breadcrumbs
-          locations={[{ name: "Accueil", to: "/" }, { name: "Collections" }]}
-        />
-        <h1 className="mb-12">Nos collections</h1>
-        <CollectionGrid initialData={collections} url="/collections/all" />
+        <Suspense fallback={null}>
+          <Breadcrumbs
+            locations={[{ name: "Accueil", to: "/" }, { name: "Produits" }]}
+          />
+        </Suspense>
+        <h1 className="mb-12">Nos produits</h1>
+        <ProductGrid initialData={products} url="/products/all" />
       </section>
     </Layout>
   );
@@ -42,16 +46,16 @@ export async function api(request: Request, { queryShop }: RequestOptions) {
   const cursor = url.searchParams.get("cursor");
 
   const response = await queryShop<QueryRoot>({
-    query: COLLECTIONS_QUERY,
+    query: PRODUCTS_QUERY,
     variables: {
       endCursor: cursor,
     },
   });
-  if (!response.data.collections)
-    return new Response("No collections found", { status: 404 });
-  return new Response(JSON.stringify(response.data.collections), {
+  if (!response.data.products)
+    return new Response("No products found", { status: 404 });
+  return new Response(JSON.stringify(response.data.products), {
     headers: { "Content-Type": "application/json" },
   });
 }
 
-export default CollectionsRoute;
+export default ProductsRoute;
