@@ -1,52 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Alegreya");
+@import "./fonts.css";
+@import "tailwindcss/base";
+@import "./base.css";
 
-@font-face {
-    font-family: "Top Secret";
-    src: url({{ "Top_Secret.woff" | asset_url }}) format("woff");
-}
+@import "tailwindcss/components";
+@import "./components.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-    html, body {
-        @apply max-w-full overflow-x-hidden font-sans bg-default text-content;
-    }
-
-    h1, h2, h3 {
-        @apply font-serif font-bold;
-    }
-
-    h1 {
-        @apply text-5xl;
-    }
-
-    h2 {
-        @apply text-4xl;
-    }
-
-    h3 {
-        @apply text-2xl;
-    }
-
-    a {
-        @apply hover:underline;
-    }
-}
-
-@layer components {
-    .btn {
-        @apply px-8 py-4 bg-primary rounded-2xl font-serif transition-colors;
-        @apply bg-primary hover:bg-primary-darken text-white hover:cursor-pointer;
-        @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-primary;
-    }
-
-    .btn-outline {
-        @apply bg-transparent hover:bg-primary/20 text-primary outline outline-primary outline-2;
-        @apply disabled:bg-transparent;
-    }
-}
+@import "tailwindcss/utilities";
 
 .swiper {
     @apply w-[50%] !overflow-visible;

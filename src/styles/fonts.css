@@ -1,0 +1,4 @@
+@font-face {
+    font-family: "Top Secret";
+    src: url({{ "Top_Secret.woff" | asset_url }}) format("woff");
+}
