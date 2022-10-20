@@ -1,25 +1,27 @@
 import { gql } from "@shopify/hydrogen";
 
 const COLLECTION_QUERY = gql`
-  query Collection($handle: String!) {
+  query collection($handle: String!, $first: Int = 30, $endCursor: String) {
     collection(handle: $handle) {
       id
       title
-      products(first: 50) {
-        edges {
-          node {
-            id
-            handle
-            title
-            availableForSale
-            images(first: 1) {
-              edges {
-                node {
-                  url
-                }
+      products(first: $first, after: $endCursor) {
+        nodes {
+          id
+          handle
+          title
+          availableForSale
+          images(first: 1) {
+            edges {
+              node {
+                url
               }
             }
           }
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
         }
       }
     }

@@ -1,11 +1,12 @@
 import React, { Suspense } from "react";
-import { HydrogenRouteProps, Link, useShopQuery } from "@shopify/hydrogen";
-import { Product, ProductEdge } from "@shopify/hydrogen/storefront-api-types";
+import { HydrogenRouteProps, useShopQuery } from "@shopify/hydrogen";
+import { RequestOptions } from "@shopify/hydrogen/utilities/apiRoutes";
 import Layout from "../../components/Layout/Layout.server";
 import COLLECTION_QUERY from "../../queries/Collection";
 import NotFound from "../../components/NotFound.server";
-import Polaroid from "../../components/Polaroid";
 import Breadcrumbs from "../../components/Breadcrumbs";
+import ProductGrid from "../../components/Product/ProductGrid.client";
+import COLLECTIONS_QUERY from "../../queries/Collections";
 
 function Policy({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -21,10 +22,6 @@ function Policy({ params }: HydrogenRouteProps) {
 
   if (!collection) return <NotFound />;
 
-  const products: Product[] = collection.products.edges.map(
-    (edge: ProductEdge) => edge.node
-  );
-
   return (
     <Layout>
       <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
@@ -39,33 +36,34 @@ function Policy({ params }: HydrogenRouteProps) {
         <Suspense fallback={null}>
           <h1 className="mb-12">{collection.title}</h1>
         </Suspense>
-        <Suspense fallback={null}>
-          <div className="flex-wrap grid grid-flow-col auto-cols-max gap-12">
-            {products.map((product, k) => (
-              <Link
-                to={`/products/${product.handle}`}
-                key={product.id}
-                className="hover:no-underline"
-              >
-                <Polaroid
-                  image={product.images.edges[0].node.url}
-                  content={product.title}
-                  tape={{
-                    invert: k % 2 === 0,
-                  }}
-                  tilt={{
-                    hover: true,
-                    invert: k % 2 === 0,
-                  }}
-                  soldOut={!product.availableForSale}
-                />
-              </Link>
-            ))}
-          </div>
-        </Suspense>
+        <ProductGrid collection={collection} url={`/collections/${handle}`} />
       </section>
     </Layout>
   );
+}
+
+export async function api(
+  request: Request,
+  { params, queryShop }: RequestOptions
+) {
+  if (request.method !== "POST") {
+    return new Response("Method not allowed", {
+      status: 405,
+      headers: { Allow: "POST" },
+    });
+  }
+
+  const { handle } = params;
+  const url = new URL(request.url);
+  const cursor = url.searchParams.get("cursor");
+
+  return queryShop({
+    query: COLLECTIONS_QUERY,
+    variables: {
+      handle,
+      endCursor: cursor,
+    },
+  });
 }
 
 export default Policy;
