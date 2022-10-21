@@ -6,9 +6,9 @@ import {
 } from "@shopify/hydrogen";
 import type { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
 import Layout from "../../components/Layout/Layout.server";
-import NotFound from "../../components/NotFound.server";
+import NotFound from "../../components/NotFound.client";
 import PRODUCT_QUERY from "../../queries/Product";
-import Breadcrumbs from "../../components/Breadcrumbs";
+import Breadcrumbs from "../../components/Breadcrumbs.client";
 import ProductDetails from "../../components/Product/ProductDetails.client";
 
 function ProductRoute({ params }: HydrogenRouteProps) {

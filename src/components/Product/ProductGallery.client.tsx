@@ -1,6 +1,6 @@
 import React from "react";
 import type { Image } from "@shopify/hydrogen/storefront-api-types";
-import Polaroid from "../Polaroid";
+import Polaroid from "../Polaroid.client";
 import CardCarousel from "../Carousel/CardCarousel.client";
 
 type Props = {

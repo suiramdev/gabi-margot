@@ -4,8 +4,8 @@ import { RequestOptions } from "@shopify/hydrogen/utilities/apiRoutes";
 import type { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
 import Layout from "../../components/Layout/Layout.server";
 import COLLECTION_QUERY from "../../queries/Collection";
-import NotFound from "../../components/NotFound.server";
-import Breadcrumbs from "../../components/Breadcrumbs";
+import NotFound from "../../components/NotFound.client";
+import Breadcrumbs from "../../components/Breadcrumbs.client";
 import ProductGrid from "../../components/Product/ProductGrid.client";
 
 function CollectionRoute({ params }: HydrogenRouteProps) {

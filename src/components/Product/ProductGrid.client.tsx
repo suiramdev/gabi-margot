@@ -4,7 +4,7 @@ import type {
   ProductConnection,
 } from "@shopify/hydrogen/storefront-api-types";
 import { Link } from "@shopify/hydrogen";
-import Polaroid from "../Polaroid";
+import Polaroid from "../Polaroid.client";
 
 type Props = {
   initialData: ProductConnection;

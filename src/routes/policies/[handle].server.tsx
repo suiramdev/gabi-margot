@@ -5,7 +5,7 @@ import {
   useShopQuery,
 } from "@shopify/hydrogen";
 import Layout from "../../components/Layout/Layout.server";
-import NotFound from "../../components/NotFound.server";
+import NotFound from "../../components/NotFound.client";
 import POLICIES_QUERY from "../../queries/Policies";
 
 function PolicyRoute({ params }: HydrogenRouteProps) {

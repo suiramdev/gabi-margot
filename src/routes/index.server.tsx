@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { useShopQuery, Link } from "@shopify/hydrogen";
 import type { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
 import Layout from "../components/Layout/Layout.server";
-import Polaroid from "../components/Polaroid";
+import Polaroid from "../components/Polaroid.client";
 import COLLECTIONS_QUERY from "../queries/Collections";
 
 function Home() {
