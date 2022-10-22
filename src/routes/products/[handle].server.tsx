@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import {
   HydrogenRouteProps,
   ProductOptionsProvider,
@@ -10,6 +10,7 @@ import NotFound from "../../components/NotFound.client";
 import PRODUCT_QUERY from "../../queries/Product";
 import Breadcrumbs from "../../components/Breadcrumbs.client";
 import ProductDetails from "../../components/Product/ProductDetails.client";
+import SkeletonText from "../../components/Skeleton/SkeletonText";
 
 function ProductRoute({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -28,13 +29,15 @@ function ProductRoute({ params }: HydrogenRouteProps) {
   return (
     <Layout>
       <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
-        <Breadcrumbs
-          locations={[
-            { name: "Accueil", to: "/" },
-            { name: "Produits", to: "/products/all" },
-            { name: product.title },
-          ]}
-        />
+        <Suspense fallback={<SkeletonText width={250} className="mb-8" />}>
+          <Breadcrumbs
+            locations={[
+              { name: "Accueil", to: "/" },
+              { name: "Produits", to: "/products/all" },
+              { name: product.title },
+            ]}
+          />
+        </Suspense>
         <ProductOptionsProvider data={product}>
           <ProductDetails product={product} />
         </ProductOptionsProvider>

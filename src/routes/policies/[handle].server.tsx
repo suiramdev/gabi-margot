@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import {
   HydrogenRouteProps,
   useLocalization,
@@ -7,6 +7,7 @@ import {
 import Layout from "../../components/Layout/Layout.server";
 import NotFound from "../../components/NotFound.client";
 import POLICIES_QUERY from "../../queries/Policies";
+import SkeletonText from "../../components/Skeleton/SkeletonText";
 
 function PolicyRoute({ params }: HydrogenRouteProps) {
   const {
@@ -52,7 +53,9 @@ function PolicyRoute({ params }: HydrogenRouteProps) {
   return (
     <Layout>
       <section className="mx-auto p-20 prose">
-        <h1>{page.title}</h1>
+        <Suspense fallback={<SkeletonText width={350} className="mb-8" />}>
+          <h1>{page.title}</h1>
+        </Suspense>
         {/* eslint-disable-next-line react/no-danger */}
         <div dangerouslySetInnerHTML={{ __html: page.body }} />
       </section>

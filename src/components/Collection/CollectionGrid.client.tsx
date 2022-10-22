@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import type {
   CollectionConnection,
   Collection,
@@ -61,27 +61,25 @@ function CollectionGrid({ initialData, url }: Props) {
   return (
     <>
       <div className="flex-wrap grid grid-flow-col auto-cols-max gap-12">
-        <Suspense fallback={null}>
-          {collections.map((collection, index) => (
-            <Link
-              to={`/collections/${collection.handle}`}
-              key={collection.id}
-              className="hover:no-underline"
-            >
-              <Polaroid
-                image={collection.image?.url}
-                content={collection.title}
-                tape={{
-                  invert: index % 2 === 0,
-                }}
-                tilt={{
-                  hover: true,
-                  invert: index % 2 === 0,
-                }}
-              />
-            </Link>
-          ))}
-        </Suspense>
+        {collections.map((collection, index) => (
+          <Link
+            to={`/collections/${collection.handle}`}
+            key={collection.id}
+            className="hover:no-underline"
+          >
+            <Polaroid
+              image={collection.image?.url}
+              content={collection.title}
+              tape={{
+                invert: index % 2 === 0,
+              }}
+              tilt={{
+                hover: true,
+                invert: index % 2 === 0,
+              }}
+            />
+          </Link>
+        ))}
       </div>
       {pageInfo.hasNextPage ? (
         <div className="my-8 flex justify-center items-center">

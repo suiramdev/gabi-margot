@@ -7,6 +7,8 @@ import COLLECTION_QUERY from "../../queries/Collection";
 import NotFound from "../../components/NotFound.client";
 import Breadcrumbs from "../../components/Breadcrumbs.client";
 import ProductGrid from "../../components/Product/ProductGrid.client";
+import SkeletonText from "../../components/Skeleton/SkeletonText";
+import SkeletonGrid from "../../components/Skeleton/SkeletonGrid";
 
 function CollectionRoute({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -25,7 +27,7 @@ function CollectionRoute({ params }: HydrogenRouteProps) {
   return (
     <Layout>
       <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
-        <Suspense fallback={null}>
+        <Suspense fallback={<SkeletonText width={250} className="mb-8" />}>
           <Breadcrumbs
             locations={[
               { name: "Accueil", to: "/" },
@@ -34,13 +36,15 @@ function CollectionRoute({ params }: HydrogenRouteProps) {
             ]}
           />
         </Suspense>
-        <Suspense fallback={null}>
+        <Suspense fallback={<SkeletonText width={350} className="mb-8" />}>
           <h1 className="mb-12">{collection.title}</h1>
         </Suspense>
-        <ProductGrid
-          initialData={collection.products}
-          url={`/collections/${handle}`}
-        />
+        <Suspense fallback={<SkeletonGrid />}>
+          <ProductGrid
+            initialData={collection.products}
+            url={`/collections/${handle}`}
+          />
+        </Suspense>
       </section>
     </Layout>
   );

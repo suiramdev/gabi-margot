@@ -4,6 +4,7 @@ import type { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
 import Layout from "../components/Layout/Layout.server";
 import Polaroid from "../components/Polaroid.client";
 import COLLECTIONS_QUERY from "../queries/Collections";
+import SkeletonGrid from "../components/Skeleton/SkeletonGrid";
 
 function Home() {
   const {
@@ -39,8 +40,8 @@ function Home() {
       <section className="flex flex-col items-center py-20">
         <h2 className="mb-12">Nos Produits</h2>
         <div className="flex-1">
-          <div className="mx-auto justify-center flex flex-wrap gap-12">
-            <Suspense fallback={null}>
+          <Suspense fallback={<SkeletonGrid amount={5} />}>
+            <div className="mx-auto justify-center flex flex-wrap gap-12">
               {collections.nodes.map((collection, k) => (
                 <Link
                   to={`/collections/${collection.handle}`}
@@ -60,8 +61,8 @@ function Home() {
                   />
                 </Link>
               ))}
-            </Suspense>
-          </div>
+            </div>
+          </Suspense>
         </div>
       </section>
     </Layout>

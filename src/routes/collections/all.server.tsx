@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useShopQuery } from "@shopify/hydrogen";
 import { RequestOptions } from "@shopify/hydrogen/utilities/apiRoutes";
 import type { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
@@ -7,6 +7,8 @@ import NotFound from "../../components/NotFound.client";
 import Breadcrumbs from "../../components/Breadcrumbs.client";
 import COLLECTIONS_QUERY from "../../queries/Collections";
 import CollectionGrid from "../../components/Collection/CollectionGrid.client";
+import SkeletonText from "../../components/Skeleton/SkeletonText";
+import SkeletonGrid from "../../components/Skeleton/SkeletonGrid";
 
 function CollectionsRoute() {
   const {
@@ -20,11 +22,15 @@ function CollectionsRoute() {
   return (
     <Layout>
       <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
-        <Breadcrumbs
-          locations={[{ name: "Accueil", to: "/" }, { name: "Collections" }]}
-        />
+        <Suspense fallback={<SkeletonText width={250} className="mb-8" />}>
+          <Breadcrumbs
+            locations={[{ name: "Accueil", to: "/" }, { name: "Collections" }]}
+          />
+        </Suspense>
         <h1 className="mb-12">Nos collections</h1>
-        <CollectionGrid initialData={collections} url="/collections/all" />
+        <Suspense fallback={<SkeletonGrid />}>
+          <CollectionGrid initialData={collections} url="/collections/all" />
+        </Suspense>
       </section>
     </Layout>
   );

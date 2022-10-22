@@ -6,6 +6,7 @@
 @import "./components.css";
 
 @import "tailwindcss/utilities";
+@import "./utilities.css";
 
 .swiper {
     @apply w-[50%] !overflow-visible;

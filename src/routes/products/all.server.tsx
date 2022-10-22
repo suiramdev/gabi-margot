@@ -6,6 +6,8 @@ import Layout from "../../components/Layout/Layout.server";
 import PRODUCTS_QUERY from "../../queries/Products";
 import Breadcrumbs from "../../components/Breadcrumbs.client";
 import ProductGrid from "../../components/Product/ProductGrid.client";
+import SkeletonText from "../../components/Skeleton/SkeletonText";
+import SkeletonGrid from "../../components/Skeleton/SkeletonGrid";
 
 function ProductsRoute({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -22,13 +24,15 @@ function ProductsRoute({ params }: HydrogenRouteProps) {
   return (
     <Layout>
       <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
-        <Suspense fallback={null}>
+        <Suspense fallback={<SkeletonText width={250} className="mb-8" />}>
           <Breadcrumbs
             locations={[{ name: "Accueil", to: "/" }, { name: "Produits" }]}
           />
         </Suspense>
         <h1 className="mb-12">Nos produits</h1>
-        <ProductGrid initialData={products} url="/products/all" />
+        <Suspense fallback={<SkeletonGrid />}>
+          <ProductGrid initialData={products} url="/products/all" />
+        </Suspense>
       </section>
     </Layout>
   );

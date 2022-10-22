@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import type {
   Product,
   ProductConnection,
@@ -60,29 +60,27 @@ function ProductGrid({ initialData, url }: Props) {
 
   return (
     <>
-      <div className="flex-wrap grid grid-flow-col auto-cols-max gap-12">
-        <Suspense fallback={null}>
-          {products.map((product, index) => (
-            <Link
-              to={`/products/${product.handle}`}
-              key={product.id}
-              className="hover:no-underline"
-            >
-              <Polaroid
-                image={product.images.nodes[0].url}
-                content={product.title}
-                tape={{
-                  invert: index % 2 === 0,
-                }}
-                tilt={{
-                  hover: true,
-                  invert: index % 2 === 0,
-                }}
-                soldOut={!product.availableForSale}
-              />
-            </Link>
-          ))}
-        </Suspense>
+      <div className="grid grid-flow-col auto-cols-max gap-12">
+        {products.map((product, index) => (
+          <Link
+            to={`/products/${product.handle}`}
+            className="hover:no-underline"
+            key={product.id}
+          >
+            <Polaroid
+              image={product.images.nodes[0].url}
+              content={product.title}
+              tape={{
+                invert: index % 2 === 0,
+              }}
+              tilt={{
+                hover: true,
+                invert: index % 2 === 0,
+              }}
+              soldOut={!product.availableForSale}
+            />
+          </Link>
+        ))}
       </div>
       {pageInfo.hasNextPage ? (
         <div className="my-8 flex justify-center items-center">

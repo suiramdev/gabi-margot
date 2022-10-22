@@ -6,6 +6,7 @@ import {
   FaLock,
   FaTimes,
   FaChevronLeft,
+  FaImage,
 } from "react-icons/fa";
 import {
   AiFillInstagram,
@@ -57,4 +58,8 @@ export function Cross({ className }: IconProps) {
 
 export function ChevronLeft({ className }: IconProps) {
   return <FaChevronLeft className={className} />;
+}
+
+export function Image({ className }: IconProps) {
+  return <FaImage className={className} />;
 }
