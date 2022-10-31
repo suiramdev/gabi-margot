@@ -50,7 +50,7 @@ function Header({ items }: Props) {
             alt="Website's logo"
           />
         </Link>
-        <div className="hidden lg:flex flex-1 justify-end gap-4">
+        <div className="flex lg:flex-1 justify-end gap-4">
           <button type="button" onClick={() => showCart(!cartShown)}>
             <ShoppingBasket />
           </button>
