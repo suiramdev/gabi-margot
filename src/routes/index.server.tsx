@@ -5,6 +5,7 @@ import Layout from "../components/Layout/Layout.server";
 import Polaroid from "../components/Polaroid.client";
 import COLLECTIONS_QUERY from "../queries/Collections";
 import SkeletonGrid from "../components/Skeleton/SkeletonGrid";
+import HomePageSeo from "../components/Seo/HomePageSeo.server";
 
 function Home() {
   const {
@@ -19,6 +20,7 @@ function Home() {
 
   return (
     <Layout>
+      <HomePageSeo />
       <section className="h-[80vh] md:bg-hero bg-cover bg-center">
         <div className="flex flex-col justify-center w-full md:w-1/2 lg:w-1/3 h-full px-10 lg:px-20 py-20 bg-default-100">
           <h1 className="flex flex-col w-fit text-6xl text-center">
