@@ -11,6 +11,7 @@ import PRODUCT_QUERY from "../../queries/Product";
 import Breadcrumbs from "../../components/Breadcrumbs.client";
 import ProductDetails from "../../components/Product/ProductDetails.client";
 import SkeletonText from "../../components/Skeleton/SkeletonText";
+import ProductSeo from "../../components/Seo/ProductSeo";
 
 function ProductRoute({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -28,6 +29,7 @@ function ProductRoute({ params }: HydrogenRouteProps) {
 
   return (
     <Layout>
+      <ProductSeo handle={handle} />
       <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
         <Suspense fallback={<SkeletonText width={250} className="mb-8" />}>
           <Breadcrumbs
