@@ -1,13 +1,11 @@
 import React from "react";
 import { Image, Link } from "@shopify/hydrogen";
 import FooterSection from "./FooterSection.client";
-import {
-  FacebookF,
-  InstagramFilled,
-  Tiktok,
-  Phone,
-  Location,
-} from "../../Icons.client";
+import FacebookIcon from "../../Icons/FacebookIcon.client";
+import InstagramIcon from "../../Icons/InstagramIcon.client";
+import TikTokIcon from "../../Icons/TikTokIcon.client";
+import MarkerIcon from "../../Icons/MarkerIcon.client";
+import PhoneIcon from "../../Icons/PhoneIcon.client";
 
 function Footer() {
   return (
@@ -22,15 +20,15 @@ function Footer() {
               alt="Website's logo"
             />
           </Link>
-          <span className="flex justify-center lg:justify-start gap-2">
-            <Location className="text-2xl" />
+          <span className="flex items-center justify-center lg:justify-start gap-2">
+            <MarkerIcon width="24" height="24" />
             Château-Gontier, Mayenne
           </span>
           <a
-            className="flex justify-center lg:justify-start gap-2"
+            className="flex items-center justify-center lg:justify-start gap-2"
             href="tel:+336 09 66 33 75"
           >
-            <Phone className="text-2xl" />
+            <PhoneIcon width="24" height="24" />
             (+33) 6 09 66 33 75
           </a>
         </FooterSection>
@@ -51,13 +49,13 @@ function Footer() {
         <FooterSection title="Suivez nous">
           <div className="flex justify-center lg:justify-start gap-2">
             <Link to="/" className="p-2 bg-content text-default rounded-full">
-              <FacebookF />
+              <FacebookIcon width="24" height="24" />
             </Link>
             <Link to="/" className="p-2 bg-content text-default rounded-full">
-              <InstagramFilled />
+              <InstagramIcon width="24" height="24" />
             </Link>
             <Link to="/" className="p-2 bg-content text-default rounded-full">
-              <Tiktok />
+              <TikTokIcon width="24" height="24" />
             </Link>
           </div>
         </FooterSection>

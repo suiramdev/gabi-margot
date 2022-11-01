@@ -8,7 +8,7 @@ import {
   useCart,
   useCartLine,
 } from "@shopify/hydrogen";
-import { Cross } from "../../Icons.client";
+import CrossIcon from "../../Icons/CrossIcon.client";
 
 function CartItem() {
   const { linesRemove } = useCart();
@@ -26,10 +26,10 @@ function CartItem() {
         <div className="relative">
           <button
             type="button"
-            className="absolute top-0 right-0 text-lg text-gray-300 hover:text-gray-400"
+            className="absolute top-0 right-0 text-gray-300 hover:text-gray-400"
             onClick={() => linesRemove([id])}
           >
-            <Cross />
+            <CrossIcon width="24" height="24" />
           </button>
         </div>
         <div className="flex items-end">

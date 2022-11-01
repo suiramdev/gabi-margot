@@ -8,7 +8,7 @@ import {
 } from "@shopify/hydrogen";
 import { CartContext } from "../../../providers/CartProvider.client";
 import CartItem from "./CartItem.client";
-import { ChevronLeft } from "../../Icons.client";
+import ChevronIcon from "../../Icons/ChevronIcon.client";
 
 function Cart() {
   const [show, setShow] = React.useContext(CartContext);
@@ -38,7 +38,7 @@ function Cart() {
             className="text-2xl"
             onClick={() => setShow(false)}
           >
-            <ChevronLeft />
+            <ChevronIcon />
           </button>
         </div>
         <div className="flex-1 flex flex-col">

@@ -3,8 +3,8 @@ import { Image, Link, useRouteParams } from "@shopify/hydrogen";
 import type { MenuItem } from "@shopify/hydrogen/storefront-api-types";
 import clsx from "clsx";
 import { NavMenuContext } from "../../providers/NavMenuProvider.client";
-import { ShoppingBasket } from "../Icons.client";
 import { CartContext } from "../../providers/CartProvider.client";
+import BasketIcon from "../Icons/BasketIcon.client";
 
 type Props = {
   items: MenuItem[];
@@ -33,7 +33,7 @@ function NavMenu({ items }: Props) {
           />
         </Link>
         <button type="button" onClick={() => showCart(!cartShown)}>
-          <ShoppingBasket />
+          <BasketIcon />
         </button>
       </div>
       <div className="flex flex-col gap-4">

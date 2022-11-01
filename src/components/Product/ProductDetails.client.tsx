@@ -7,8 +7,8 @@ import {
 } from "@shopify/hydrogen";
 import type { Product } from "@shopify/hydrogen/storefront-api-types";
 import ProductGallery from "./ProductGallery.client";
-import { Lock } from "../Icons.client";
 import { CartContext } from "../../providers/CartProvider.client";
+import LockIcon from "../Icons/LockIcon.client";
 
 type Props = {
   product: Product;
@@ -45,7 +45,7 @@ function ProductDetails({ product }: Props) {
           <div className="mb-4 flex gap-4">
             <BuyNowButton
               className="btn"
-              variantId={selectedVariant?.id as string}
+              variantId={selectedVariant?.id || ""}
               quantity={1}
               disabled={isOutOfStock}
             >
@@ -62,7 +62,7 @@ function ProductDetails({ product }: Props) {
             </AddToCartButton>
           </div>
           <span className="flex items-center gap-2 text-secondary">
-            <Lock />
+            <LockIcon width="16" height="16" />
             Payement sécurisé
           </span>
         </div>
