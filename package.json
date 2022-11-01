@@ -32,11 +32,14 @@
   },
   "dependencies": {
     "@shopify/hydrogen": "^1.0.2",
+    "@turf/circle": "^6.5.0",
     "clsx": "^1.2.1",
     "eslint-plugin-hydrogen": "^0.12.2",
+    "mapbox-gl": "^2.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "react-map-gl": "^7.0.19",
     "react-spring": "^9.5.5",
     "swiper": "^8.3.2"
   },
