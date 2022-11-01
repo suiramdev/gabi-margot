@@ -26,21 +26,22 @@ function Header({ items }: Props) {
           type="button"
           className="block lg:hidden"
           onClick={() => setNavMenu(!showNavMenu)}
+          aria-label="Ouvrir le menu de navigation"
         >
           <MenuIcon />
         </button>
         <div className="hidden lg:flex flex-1 gap-4 text-default-300">
-          <Link to="/">
+          <Link to="/" title="Aller sur la page Facebook">
             <FacebookIcon className="w-8 h-8" />
           </Link>
-          <Link to="/">
+          <Link to="/" title="Aller sur la page Instagram">
             <InstagramIcon className="w-8 h-8" />
           </Link>
-          <Link to="/">
+          <Link to="/" title="Aller sur la page TikTok">
             <TikTokIcon className="w-8 h-8" />
           </Link>
         </div>
-        <Link to="/">
+        <Link to="/" title="Aller à la page d'accueil">
           <Image
             src="/assets/logo.svg"
             width={200}
@@ -49,7 +50,11 @@ function Header({ items }: Props) {
           />
         </Link>
         <div className="flex lg:flex-1 justify-end gap-4">
-          <button type="button" onClick={() => showCart(!cartShown)}>
+          <button
+            type="button"
+            onClick={() => showCart(!cartShown)}
+            aria-label="Ouvrir le panier"
+          >
             <BasketIcon />
           </button>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { animated, useSprings } from "react-spring";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import ChevronIcon from "../Icons/ChevronIcon.client";
 
 type Props = {
   children: React.ReactNode[];
@@ -40,8 +40,9 @@ function CardCarousel({ children }: Props) {
       <button
         type="button"
         className="text-3xl text-content/50 hover:text-content"
+        aria-label="Image précédente"
       >
-        <FaArrowLeft />
+        <ChevronIcon />
       </button>
       <div className="w-full aspect-square relative">
         <div className="w-[70%] aspect-square absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
@@ -60,8 +61,9 @@ function CardCarousel({ children }: Props) {
         type="button"
         className="text-3xl text-content/50 hover:text-content"
         onClick={nextSlide}
+        aria-label="Image suivante"
       >
-        <FaArrowRight />
+        <ChevronIcon />
       </button>
     </div>
   );

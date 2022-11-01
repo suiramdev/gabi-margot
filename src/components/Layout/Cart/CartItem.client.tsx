@@ -28,6 +28,7 @@ function CartItem() {
             type="button"
             className="absolute top-0 right-0 text-gray-300 hover:text-gray-400"
             onClick={() => linesRemove([id])}
+            aria-label="Enlever le produit du panier"
           >
             <CrossIcon width="24" height="24" />
           </button>
@@ -37,6 +38,7 @@ function CartItem() {
             <CartLineQuantityAdjustButton
               className="px-2 hover:bg-default-100"
               adjust="decrease"
+              aria-label="Diminuer la quantité"
             >
               -
             </CartLineQuantityAdjustButton>
@@ -44,6 +46,7 @@ function CartItem() {
             <CartLineQuantityAdjustButton
               className="px-2 hover:bg-default-100"
               adjust="increase"
+              aria-label="Augmenter la quantité"
             >
               +
             </CartLineQuantityAdjustButton>

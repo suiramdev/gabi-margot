@@ -66,6 +66,7 @@ function ProductGrid({ initialData, url }: Props) {
             to={`/products/${product.handle}`}
             className="hover:no-underline"
             key={product.id}
+            title={`Voir le produit ${product.title}`}
           >
             <Polaroid
               image={product.images.nodes[0].url}

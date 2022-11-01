@@ -24,15 +24,19 @@ function NavMenu({ items }: Props) {
       )}
     >
       <div className="flex justify-between p-10 text-3xl">
-        <Link to="/">
+        <Link to="/" title="Aller à la page d'accueil">
           <Image
             src="/assets/logo.svg"
             width={200}
             height={100}
-            alt="Website's logo"
+            alt="Logo de la boutique"
           />
         </Link>
-        <button type="button" onClick={() => showCart(!cartShown)}>
+        <button
+          type="button"
+          onClick={() => showCart(!cartShown)}
+          aria-label="Ouvrir le panier"
+        >
           <BasketIcon />
         </button>
       </div>

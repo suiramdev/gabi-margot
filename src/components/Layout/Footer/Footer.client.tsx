@@ -12,7 +12,11 @@ function Footer() {
     <>
       <div className="flex flex-col lg:flex-row gap-10 justify-between items-center lg:items-start px-20 py-10 bg-default-200">
         <FooterSection>
-          <Link to="/" className="flex justify-center lg:justify-start">
+          <Link
+            to="/"
+            className="flex justify-center lg:justify-start"
+            title="Aller à la page d'accueil"
+          >
             <Image
               src="/assets/logo.svg"
               width={200}
@@ -27,6 +31,7 @@ function Footer() {
           <a
             className="flex items-center justify-center lg:justify-start gap-2"
             href="tel:+336 09 66 33 75"
+            title="Appeler le 06 09 66 33 75"
           >
             <PhoneIcon width="24" height="24" />
             (+33) 6 09 66 33 75
@@ -48,13 +53,25 @@ function Footer() {
         </FooterSection>
         <FooterSection title="Suivez nous">
           <div className="flex justify-center lg:justify-start gap-2">
-            <Link to="/" className="p-2 bg-content text-default rounded-full">
+            <Link
+              to="/"
+              className="p-2 bg-content text-default rounded-full"
+              title="Aller sur la page Facebook"
+            >
               <FacebookIcon width="24" height="24" />
             </Link>
-            <Link to="/" className="p-2 bg-content text-default rounded-full">
+            <Link
+              to="/"
+              className="p-2 bg-content text-default rounded-full"
+              title="Aller sur la page Instagram"
+            >
               <InstagramIcon width="24" height="24" />
             </Link>
-            <Link to="/" className="p-2 bg-content text-default rounded-full">
+            <Link
+              to="/"
+              className="p-2 bg-content text-default rounded-full"
+              title="Aller sur la page TikTok"
+            >
               <TikTokIcon width="24" height="24" />
             </Link>
           </div>

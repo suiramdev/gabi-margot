@@ -37,6 +37,7 @@ function Cart() {
             type="button"
             className="text-2xl"
             onClick={() => setShow(false)}
+            aria-label="Fermer le panier"
           >
             <ChevronIcon />
           </button>

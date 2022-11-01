@@ -66,6 +66,7 @@ function CollectionGrid({ initialData, url }: Props) {
             to={`/collections/${collection.handle}`}
             key={collection.id}
             className="hover:no-underline"
+            title={`Voir la collection ${collection.title}`}
           >
             <Polaroid
               image={collection.image?.url}
