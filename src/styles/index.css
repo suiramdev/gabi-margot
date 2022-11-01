@@ -7,19 +7,3 @@
 
 @import "tailwindcss/utilities";
 @import "./utilities.css";
-
-.swiper {
-    @apply w-[50%] !overflow-visible;
-}
-
-.swiper-pagination-bullets {
-    @apply w-full h-full mt-8 flex justify-center items-center gap-2;
-}
-
-.swiper-pagination-bullet {
-    @apply w-4 h-4 bg-default-300 rounded-full hover:cursor-pointer hover:bg-content;
-}
-
-.swiper-pagination-bullet-active {
-    @apply bg-content;
-}
