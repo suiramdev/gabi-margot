@@ -11,6 +11,7 @@ import Layout from "../../components/layout/Layout.server";
 import ProductSeo from "../../components/seo/ProductSeo.server";
 import Breadcrumbs from "../../components/elements/Breadcrumbs";
 import ProductDetails from "../../components/products/ProductDetails.client";
+import FeaturedProducts from "../../components/sections/FeaturedProducts.server";
 
 function ProductRoute({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -43,9 +44,7 @@ function ProductRoute({ params }: HydrogenRouteProps) {
           <ProductDetails product={product} />
         </ProductOptionsProvider>
       </section>
-      <section className="bg-default-100">
-        <h2 className="py-8 text-center">Nos Recommandations</h2>
-      </section>
+      <FeaturedProducts />
     </Layout>
   );
 }

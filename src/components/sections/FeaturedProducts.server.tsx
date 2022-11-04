@@ -17,7 +17,10 @@ function FeaturedCollections() {
   });
 
   return (
-    <Section title="Parmis nos collections">
+    <Section
+      className="bg-default-100"
+      title="Ils peuvent aussi vous intéresser"
+    >
       <div className="mx-auto justify-center flex flex-wrap gap-12">
         {collections.nodes.map((collection, k) => (
           <Link
