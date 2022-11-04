@@ -42,7 +42,7 @@ function CardCarousel({ children }: Props) {
         className="text-3xl text-content/50 hover:text-content"
         aria-label="Image précédente"
       >
-        <ChevronLeftIcon className="w-10 h-10" />
+        <ChevronLeftIcon size="md" />
       </button>
       <div className="w-full aspect-square relative">
         <div className="w-[70%] aspect-square absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
@@ -63,7 +63,7 @@ function CardCarousel({ children }: Props) {
         onClick={nextSlide}
         aria-label="Image suivante"
       >
-        <ChevronRightIcon className="w-10 h-10" />
+        <ChevronRightIcon size="md" />
       </button>
     </div>
   );

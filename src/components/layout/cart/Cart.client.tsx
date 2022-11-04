@@ -39,7 +39,7 @@ function Cart() {
             onClick={() => setShow(false)}
             aria-label="Fermer le panier"
           >
-            <ChevronLeftIcon className="w-10 h-10" />
+            <ChevronLeftIcon size="md" />
           </button>
         </div>
         <div className="flex-1 flex flex-col">
