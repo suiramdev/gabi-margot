@@ -29,7 +29,7 @@ function CollectionRoute({ params }: HydrogenRouteProps) {
           <Breadcrumbs
             locations={[
               { name: "Accueil", to: "/" },
-              { name: "Collections", to: "/collections/all" },
+              { name: "Collections", to: "/collections" },
               { name: collection.title },
             ]}
           />

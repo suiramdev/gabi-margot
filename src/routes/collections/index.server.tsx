@@ -27,7 +27,7 @@ function CollectionsRoute() {
         </Suspense>
         <h1 className="mb-12">Nos collections</h1>
         <Suspense fallback={null}>
-          <CollectionGrid initialData={collections} url="/collections/all" />
+          <CollectionGrid initialData={collections} url="/collections" />
         </Suspense>
       </section>
     </Layout>

@@ -21,7 +21,7 @@ function Home() {
         <div className="flex flex-col justify-center w-full md:w-1/2 lg:w-1/3 h-full px-10 lg:px-20 py-20 bg-default-100">
           <h1>{shop.name}</h1>
           <p className="py-8">{shop.description}</p>
-          <Link to="/products/all" className="btn w-fit mt-8">
+          <Link to="/products" className="btn w-fit mt-8">
             Passer aux achats
           </Link>
         </div>

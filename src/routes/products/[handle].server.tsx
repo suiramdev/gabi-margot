@@ -35,7 +35,7 @@ function ProductRoute({ params }: HydrogenRouteProps) {
           <Breadcrumbs
             locations={[
               { name: "Accueil", to: "/" },
-              { name: "Produits", to: "/products/all" },
+              { name: "Produits", to: "/products" },
               { name: product.title },
             ]}
           />

@@ -29,7 +29,7 @@ function ProductsRoute({ params }: HydrogenRouteProps) {
         </Suspense>
         <h1 className="mb-12">Nos produits</h1>
         <Suspense fallback={null}>
-          <ProductGrid initialData={products} url="/products/all" />
+          <ProductGrid initialData={products} url="/products" />
         </Suspense>
       </section>
     </Layout>
