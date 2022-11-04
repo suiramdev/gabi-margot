@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { HydrogenRouteProps, useShopQuery } from "@shopify/hydrogen";
+import { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
 import PAGE_QUERY from "../../queries/Page";
 import NotFound from "../../components/layout/NotFound.client";
 import Layout from "../../components/layout/Layout.server";
@@ -10,7 +11,7 @@ function PolicyRoute({ params }: HydrogenRouteProps) {
 
   const {
     data: { page },
-  } = useShopQuery({
+  } = useShopQuery<QueryRoot>({
     query: PAGE_QUERY,
     variables: {
       handle,
