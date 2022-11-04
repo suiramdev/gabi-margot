@@ -1,6 +1,6 @@
 @layer components {
     .btn {
-        @apply px-8 py-4 rounded-2xl font-serif transition-colors;
+        @apply px-8 py-4 rounded-2xl font-serif font-bold text-lg transition-colors;
         @apply bg-primary hover:bg-primary-darken text-white hover:cursor-pointer;
         @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-primary;
     }
