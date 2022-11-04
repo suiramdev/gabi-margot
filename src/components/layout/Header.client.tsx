@@ -48,7 +48,7 @@ function Header({ items }: Props) {
             src="/assets/logo.svg"
             width={200}
             height={100}
-            alt="Website's logo"
+            alt="Logo du site"
           />
         </Link>
         <div className="flex lg:flex-1 justify-end gap-4">

@@ -23,7 +23,7 @@ function Footer() {
               src="/assets/logo.svg"
               width={200}
               height={100}
-              alt="Website's logo"
+              alt="Logo du site"
             />
           </Link>
           <span className="flex items-center justify-center lg:justify-start gap-2">
