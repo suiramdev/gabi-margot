@@ -22,10 +22,11 @@ function ProductDetails({ product }: Props) {
 
   return (
     <div className="grid lg:grid-cols-[45%_100%] gap-12">
+      <h1 className="block lg:hidden mb-2">{product.title}</h1>
       <ProductGallery images={product.images.nodes} soldOut={isOutOfStock} />
       <div className="flex flex-col justify-center gap-8">
         <div>
-          <h1 className="mb-2">{product.title}</h1>
+          <h1 className="hidden lg:block mb-2">{product.title}</h1>
           <div className="flex items-center gap-4">
             <ProductPrice
               className="text-2xl text-primary font-bold"
@@ -42,7 +43,7 @@ function ProductDetails({ product }: Props) {
         </div>
         <p className="mb-8 prose">{product.description}</p>
         <div>
-          <div className="mb-4 flex gap-4">
+          <div className="flex flex-col lg:flex-row mb-4 flex gap-4">
             <BuyNowButton
               className="btn"
               variantId={selectedVariant?.id || ""}

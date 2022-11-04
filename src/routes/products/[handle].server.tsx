@@ -30,7 +30,7 @@ function ProductRoute({ params }: HydrogenRouteProps) {
   return (
     <Layout>
       <ProductSeo handle={handle} />
-      <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
+      <section className="min-h-screen py-24 px-8 md:px-16 lg:px-32">
         <Suspense fallback={null}>
           <Breadcrumbs
             locations={[
