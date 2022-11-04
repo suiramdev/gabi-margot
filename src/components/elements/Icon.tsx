@@ -1,15 +1,23 @@
 import React from "react";
 import clsx from "clsx";
 
-type Props = JSX.IntrinsicElements["svg"];
+type Props = JSX.IntrinsicElements["svg"] & {
+  size?: "sm" | "md" | "lg";
+};
 
-function Icon({ className, children, ...props }: Props) {
+function Icon({ size = "sm", className, children, ...props }: Props) {
+  const sizeClass = {
+    sm: "w-5 h-5",
+    md: "w-10 h-10",
+    lg: "w-20 h-20",
+  };
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      className={clsx("w-5 h-5", className)}
+      className={clsx(sizeClass[size], className)}
       {...props}
     >
       {children}

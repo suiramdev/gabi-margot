@@ -64,7 +64,10 @@ function Card({
         />
       ) : (
         <div className="relative h-[175px] lg:h-[280px] aspect-square bg-gray-200">
-          <FrameIcon className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 text-gray-300" />
+          <FrameIcon
+            size="lg"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 text-gray-300"
+          />
         </div>
       )}
       {content ? <figcaption className="mt-2">{content}</figcaption> : null}

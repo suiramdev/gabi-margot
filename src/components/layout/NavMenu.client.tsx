@@ -37,7 +37,7 @@ function NavMenu({ items }: Props) {
           onClick={() => showCart(!cartShown)}
           aria-label="Ouvrir le panier"
         >
-          <BasketIcon className="w-10 h-10" />
+          <BasketIcon size="md" />
         </button>
       </div>
       <div className="flex flex-col gap-4">

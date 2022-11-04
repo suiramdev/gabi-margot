@@ -30,17 +30,17 @@ function Header({ items }: Props) {
           onClick={() => setNavMenu(!showNavMenu)}
           aria-label="Ouvrir le menu de navigation"
         >
-          <MenuIcon className="w-10 h-10" />
+          <MenuIcon size="md" />
         </button>
         <div className="hidden lg:flex flex-1 gap-4 text-default-300">
           <Link to="/" title="Aller sur la page Facebook">
-            <FacebookIcon className="w-10 h-10" />
+            <FacebookIcon size="md" />
           </Link>
           <Link to="/" title="Aller sur la page Instagram">
-            <InstagramIcon className="w-10 h-10" />
+            <InstagramIcon size="md" />
           </Link>
           <Link to="/" title="Aller sur la page TikTok">
-            <TikTokIcon className="w-10 h-10" />
+            <TikTokIcon size="md" />
           </Link>
         </div>
         <Link to="/" title="Aller à la page d'accueil">
@@ -57,7 +57,7 @@ function Header({ items }: Props) {
             onClick={() => showCart(!cartShown)}
             aria-label="Ouvrir le panier"
           >
-            <BasketIcon className="w-10 h-10" />
+            <BasketIcon size="md" />
           </button>
         </div>
       </div>
