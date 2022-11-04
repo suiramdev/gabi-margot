@@ -2,13 +2,11 @@ import React, { Suspense } from "react";
 import { HydrogenRouteProps, useShopQuery } from "@shopify/hydrogen";
 import { RequestOptions } from "@shopify/hydrogen/utilities/apiRoutes";
 import type { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
-import Layout from "../../components/Layout/Layout.server";
 import COLLECTION_QUERY from "../../queries/Collection";
-import NotFound from "../../components/NotFound.client";
-import Breadcrumbs from "../../components/Breadcrumbs.client";
-import ProductGrid from "../../components/Product/ProductGrid.client";
-import SkeletonText from "../../components/Skeleton/SkeletonText";
-import SkeletonGrid from "../../components/Skeleton/SkeletonGrid";
+import NotFound from "../../components/layout/NotFound.client";
+import Layout from "../../components/layout/Layout.server";
+import Breadcrumbs from "../../components/elements/Breadcrumbs";
+import ProductGrid from "../../components/products/ProductGrid.client";
 
 function CollectionRoute({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -27,7 +25,7 @@ function CollectionRoute({ params }: HydrogenRouteProps) {
   return (
     <Layout>
       <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
-        <Suspense fallback={<SkeletonText width={250} className="mb-8" />}>
+        <Suspense fallback={null}>
           <Breadcrumbs
             locations={[
               { name: "Accueil", to: "/" },
@@ -36,10 +34,10 @@ function CollectionRoute({ params }: HydrogenRouteProps) {
             ]}
           />
         </Suspense>
-        <Suspense fallback={<SkeletonText width={350} className="mb-8" />}>
+        <Suspense fallback={null}>
           <h1 className="mb-12">{collection.title}</h1>
         </Suspense>
-        <Suspense fallback={<SkeletonGrid />}>
+        <Suspense fallback={null}>
           <ProductGrid
             initialData={collection.products}
             url={`/collections/${handle}`}

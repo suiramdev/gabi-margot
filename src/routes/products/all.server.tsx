@@ -2,12 +2,10 @@ import React, { Suspense } from "react";
 import { HydrogenRouteProps, useShopQuery } from "@shopify/hydrogen";
 import { RequestOptions } from "@shopify/hydrogen/utilities/apiRoutes";
 import type { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
-import Layout from "../../components/Layout/Layout.server";
 import PRODUCTS_QUERY from "../../queries/Products";
-import Breadcrumbs from "../../components/Breadcrumbs.client";
-import ProductGrid from "../../components/Product/ProductGrid.client";
-import SkeletonText from "../../components/Skeleton/SkeletonText";
-import SkeletonGrid from "../../components/Skeleton/SkeletonGrid";
+import Layout from "../../components/layout/Layout.server";
+import Breadcrumbs from "../../components/elements/Breadcrumbs";
+import ProductGrid from "../../components/products/ProductGrid.client";
 
 function ProductsRoute({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -24,13 +22,13 @@ function ProductsRoute({ params }: HydrogenRouteProps) {
   return (
     <Layout>
       <section className="min-h-screen py-24 px-4 sm:px-16 md:px-32">
-        <Suspense fallback={<SkeletonText width={250} className="mb-8" />}>
+        <Suspense fallback={null}>
           <Breadcrumbs
             locations={[{ name: "Accueil", to: "/" }, { name: "Produits" }]}
           />
         </Suspense>
         <h1 className="mb-12">Nos produits</h1>
-        <Suspense fallback={<SkeletonGrid />}>
+        <Suspense fallback={null}>
           <ProductGrid initialData={products} url="/products/all" />
         </Suspense>
       </section>

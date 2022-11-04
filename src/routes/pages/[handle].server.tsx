@@ -1,10 +1,9 @@
 import React, { Suspense } from "react";
 import { HydrogenRouteProps, useShopQuery } from "@shopify/hydrogen";
-import Layout from "../../components/Layout/Layout.server";
-import NotFound from "../../components/NotFound.client";
-import SkeletonText from "../../components/Skeleton/SkeletonText";
-import PageSeo from "../../components/Seo/PageSeo.server";
 import PAGE_QUERY from "../../queries/Page";
+import NotFound from "../../components/layout/NotFound.client";
+import Layout from "../../components/layout/Layout.server";
+import PageSeo from "../../components/seo/PageSeo.server";
 
 function PolicyRoute({ params }: HydrogenRouteProps) {
   const { handle } = params;
@@ -26,7 +25,7 @@ function PolicyRoute({ params }: HydrogenRouteProps) {
     <Layout>
       <PageSeo handle={handle} />
       <section className="mx-auto p-20 prose">
-        <Suspense fallback={<SkeletonText width={350} className="mb-8" />}>
+        <Suspense fallback={null}>
           <h1>{page.title}</h1>
         </Suspense>
         {/* eslint-disable-next-line react/no-danger */}

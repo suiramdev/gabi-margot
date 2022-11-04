@@ -19,5 +19,13 @@ module.exports = {
     project: "./tsconfig.json",
   },
   plugins: ["react", "@typescript-eslint"],
-  rules: {},
+  rules: {
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "import/prefer-default-export": "warn",
+    "import/extensions": "off",
+  },
+  "globals": {
+    "JSX": "readonly"
+  },
 };
