@@ -35,11 +35,11 @@
     "@turf/circle": "^6.5.0",
     "clsx": "^1.2.1",
     "eslint-plugin-hydrogen": "^0.12.2",
+    "framer-motion": "^7.6.4",
     "mapbox-gl": "^2.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-map-gl": "^7.0.19",
-    "react-spring": "^9.5.5"
+    "react-map-gl": "^7.0.19"
   },
   "author": "suiramdev"
 }

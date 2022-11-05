@@ -36,10 +36,10 @@ function Card({
       className={clsx(
         "px-[8px] py-[10px] bg-[#eee6d8] drop-shadow-md",
         tape && [
-          "before:content-[''] before:absolute before:w-[75px] before:h-[30px] before:top-[-10px] before:bg-[#DEDCC6]/80 before:-rotate-12",
+          "after:content-[''] after:absolute after:w-[75px] after:h-[30px] after:top-[-10px] after:bg-[#DEDCC6]/80",
           typeof tape !== "boolean" && tape.invert
-            ? "before:left-[5px] before:rotate-12"
-            : "before:right-[5px] before:-rotate-12",
+            ? "after:left-[5px] after:rotate-12"
+            : "after:right-[5px] after:-rotate-12",
         ],
         tilt && [
           typeof tilt !== "boolean" && tilt.invert ? "-skew-y-2" : "skew-y-2",
@@ -58,12 +58,17 @@ function Card({
           height="100%"
           alt="Polaroid"
           className={clsx(
-            "h-[175px] lg:h-[280px] aspect-square object-cover",
+            "h-[175px] lg:h-[280px] aspect-square object-cover pointer-events-none",
             imageClassName
           )}
         />
       ) : (
-        <div className="relative h-[175px] lg:h-[280px] aspect-square bg-gray-200">
+        <div
+          className={clsx(
+            "relative h-[175px] lg:h-[280px] aspect-square bg-gray-200",
+            imageClassName
+          )}
+        >
           <FrameIcon
             size="lg"
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 text-gray-300"
