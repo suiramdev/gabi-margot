@@ -53,7 +53,6 @@ function ProductGallery({ images, soldOut }: Props) {
                   onDragEnd={() => moveToEnd(index)}
                 >
                   <Card
-                    className="w-full h-full"
                     imageClassName="!w-full !h-full"
                     image={image.url}
                     soldOut={soldOut}
