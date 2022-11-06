@@ -3,9 +3,10 @@ import clsx from "clsx";
 import {
   CartCheckoutButton,
   CartCost,
-  CartLines,
+  CartLineProvider,
   useCart,
 } from "@shopify/hydrogen";
+import { motion, AnimatePresence } from "framer-motion";
 import { CartContext } from "../../../providers/CartProvider.client";
 import { ChevronLeftIcon } from "../../elements/Icon";
 import CartItem from "./CartItem.client";
@@ -42,11 +43,23 @@ function Cart() {
             <ChevronLeftIcon size="md" />
           </button>
         </div>
-        <div className="flex-1 flex flex-col">
-          <CartLines>
-            <CartItem />
-          </CartLines>
-        </div>
+        <ul className="flex-1 flex flex-col gap-4 overflow-y-scroll">
+          <AnimatePresence>
+            {lines.map((line) => (
+              <motion.li
+                key={line.id}
+                initial={{ opacity: 0, scale: 1.2 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.2 }}
+                transition={{ duration: 0.2 }}
+              >
+                <CartLineProvider line={line}>
+                  <CartItem />
+                </CartLineProvider>
+              </motion.li>
+            ))}
+          </AnimatePresence>
+        </ul>
         <div className="flex flex-col gap-4 py-5 border-t-2 border-gray-300 text-gray-400">
           <div className="flex justify-between items-center">
             <span>Sous-total</span>

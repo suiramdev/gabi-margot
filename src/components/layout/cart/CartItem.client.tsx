@@ -8,19 +8,24 @@ import {
   useCart,
   useCartLine,
 } from "@shopify/hydrogen";
-import { CloseIcon } from "../../elements/Icon";
+import { CloseIcon, FrameIcon } from "../../elements/Icon";
 
 function CartItem() {
   const { linesRemove } = useCart();
-  const { id } = useCartLine();
+  const { id, merchandise } = useCartLine();
 
   return (
     <div className="flex gap-4">
-      <CartLineImage
-        width={75}
-        height={75}
-        className="object-cover drop-shadow-md"
-      />
+      {merchandise.image ? (
+        <CartLineImage width={75} height={75} className="object-cover" />
+      ) : (
+        <div className="relative w-[75px] h-[75px] bg-gray-200">
+          <FrameIcon
+            size="md"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 text-gray-300"
+          />
+        </div>
+      )}
       <div className="flex-1 grid grid-cols-[auto_auto]">
         <CartLineProductTitle className="text-xl font-serif break-all" />
         <div className="relative">
