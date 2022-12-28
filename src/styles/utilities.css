@@ -1,5 +1,0 @@
-@layer utilities {
-    .mask-image-b {
-        mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
-    }
-}

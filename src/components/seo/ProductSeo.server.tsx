@@ -4,23 +4,23 @@ import { QueryRoot } from "@shopify/hydrogen/storefront-api-types";
 import PRODUCT_SEO_QUERY from "../../queries/seo/ProductSeo";
 
 type Props = {
-  handle: string;
+    handle: string;
 };
 
 function ProductSeo({ handle }: Props) {
-  const {
-    data: { product },
-  } = useShopQuery<QueryRoot>({
-    query: PRODUCT_SEO_QUERY,
-    preload: true,
-    variables: {
-      handle,
-    },
-  });
+    const {
+        data: { product },
+    } = useShopQuery<QueryRoot>({
+        query: PRODUCT_SEO_QUERY,
+        preload: true,
+        variables: {
+            handle,
+        },
+    });
 
-  if (!product) return null;
+    if (!product) return null;
 
-  return <Seo type="product" data={product} />;
+    return <Seo type="product" data={product} />;
 }
 
 export default ProductSeo;

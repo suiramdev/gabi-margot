@@ -1,39 +1,33 @@
 import React from "react";
 import { useShopQuery } from "@shopify/hydrogen";
 import MENU_QUERY from "../../queries/Menu";
-import Noise from "./Noise";
 import CartProvider from "../../providers/CartProvider.client";
 import Cart from "./cart/Cart.client";
-import NavMenuProvider from "../../providers/NavMenuProvider.client";
+import Navbar from "./Navbar.client";
+import Footer from "./Footer.server";
 import NavMenu from "./NavMenu.client";
-import Content from "./Content.client";
-import Header from "./Header.client";
-import Footer from "./footer/Footer.client";
+import NavMenuProvider from "../../providers/NavMenuProvider.client";
 
 type Props = {
-  children: React.ReactNode;
+    children: React.ReactNode;
 };
 
 function Layout({ children }: Props) {
-  const { data } = useShopQuery<any>({
-    query: MENU_QUERY,
-  });
+    const { data } = useShopQuery<any>({
+        query: MENU_QUERY,
+    });
 
-  return (
-    <Noise>
-      <CartProvider>
-        <Cart />
+    return (
         <NavMenuProvider>
-          <NavMenu items={data.menu.items} />
-          <Content>
-            <Header items={data.menu.items} />
-            {children}
-            <Footer />
-          </Content>
+            <CartProvider>
+                <Cart />
+                <NavMenu items={data.menu.items} />
+                <Navbar items={data.menu.items} />
+                {children}
+                <Footer />
+            </CartProvider>
         </NavMenuProvider>
-      </CartProvider>
-    </Noise>
-  );
+    );
 }
 
 export default Layout;

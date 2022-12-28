@@ -1,6 +1,16 @@
+@import "./components.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base {
-    html, body {
-        @apply max-w-full overflow-x-hidden font-sans bg-default text-content;
+    html {
+        @apply bg-stone-200;
+    }
+
+    body {
+        @apply bg-stone-50 text-stone-900;
+        @apply after:content-[''] after:fixed after:top-0 after:left-0 after:w-screen after:h-screen after:bg-noise after:pointer-events-none;
     }
 
     h1, h2, h3 {
@@ -8,18 +18,18 @@
     }
 
     h1 {
-        @apply text-5xl;
+        @apply text-3xl;
     }
-
+    
     h2 {
-        @apply text-4xl;
-    }
-
-    h3 {
         @apply text-2xl;
     }
 
-    a {
+    section {
+        @apply px-5 lg:px-20 py-10;
+    }
+
+    footer a {
         @apply hover:underline;
     }
 }

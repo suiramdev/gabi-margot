@@ -11,13 +11,13 @@
     "lib": ["dom", "dom.iterable", "scripthost", "es2020"],
     "allowJs": true,
     "checkJs": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "types": ["vite/client"],
     "esModuleInterop": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist", ".eslintrc.js"],
-  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "dist"],
+  "include": ["**/*.ts", "**/*.tsx"]
 }

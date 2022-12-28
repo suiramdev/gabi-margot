@@ -1,66 +1,63 @@
 import React from "react";
-import { Image, Link, useRouteParams } from "@shopify/hydrogen";
+import { Link, useRouteParams } from "@shopify/hydrogen";
 import type { MenuItem } from "@shopify/hydrogen/storefront-api-types";
-import clsx from "clsx";
-import { BasketIcon } from "../elements/Icon";
 import { NavMenuContext } from "../../providers/NavMenuProvider.client";
-import { CartContext } from "../../providers/CartProvider.client";
+import clsx from "clsx";
+import { outsideClickHandler } from "../../utils/menu";
+import ChevronRightIcon from "../icons/ChevronRightIcon";
 
 type Props = {
-  items: MenuItem[];
+    items: MenuItem[];
 };
 
 function NavMenu({ items }: Props) {
-  const { handle } = useRouteParams();
-  const [show] = React.useContext(NavMenuContext);
-  const [cartShown, showCart] = React.useContext(CartContext);
+    const { handle } = useRouteParams();
+    const [show, setShow] = React.useContext(NavMenuContext);
+    const wrapperRef = React.useRef<HTMLDivElement>(null);
 
-  return (
-    <div
-      className={clsx(
-        "w-[70%] h-screen fixed top-0 left-0 flex lg:hidden flex-col bg-default-200 transition-transform",
-        "after:absolute after:w-full after:h-full after:pointer-events-none after:shadow-[-9px_1px_22px_1px_rgba(0,0,0,0.1)_inset]",
-        show ? "translate-x-0" : "-translate-x-full"
-      )}
-    >
-      <div className="flex justify-between p-10 text-3xl">
-        <Link to="/" title="Aller à la page d'accueil">
-          <Image
-            src="/assets/logo.svg"
-            width={200}
-            height={100}
-            alt="Logo de la boutique"
-          />
-        </Link>
-        <button
-          type="button"
-          onClick={() => showCart(!cartShown)}
-          aria-label="Ouvrir le panier"
-        >
-          <BasketIcon size="md" />
-        </button>
-      </div>
-      <div className="flex flex-col gap-4">
-        {items.map((item) => {
-          const { pathname } = new URL(item.url || "");
+    outsideClickHandler(wrapperRef, () => setShow(false));
 
-          return (
-            <Link
-              to={`${pathname}`}
-              className={clsx(
-                "flex justify-center items-center px-10 py-5 bg-default-300 text-center hover:text-primary hover:no-underline",
-                pathname.split("/").pop() === (handle || "") &&
-                  "font-bold text-primary"
-              )}
-              key={item.id}
+    return (
+        <div className={clsx(
+            "fixed w-full h-full z-50 transition-colors",
+            show ? "bg-black/40" : "pointer-events-none bg-transparent"
+        )}>
+            <div
+                className={clsx(
+                    "absolute w-full md:w-[40%] h-full top-0 right-0 flex flex-col bg-stone-100 transition-transform duration-300",
+                    show ? "translate-x-0" : "translate-x-full"
+                )}
+                ref={wrapperRef}
             >
-              {item.title}
-            </Link>
-          );
-        })}
-      </div>
-    </div>
-  );
+                <div className="p-5 flex justify-between items-center">
+                    <h2>Menu</h2>
+                    <button type="button" onClick={() => setShow(false)}>
+                        <ChevronRightIcon size={32} />
+                    </button>
+                </div>
+                <ul className="flex-1 flex flex-col gap-2.5">
+                    {items.map((item) => {
+                        const { pathname } = new URL(item.url || "");
+                        return (
+                            <li>
+                                <Link
+                                    to={`${pathname}`}
+                                    className={clsx(
+                                        "px-5 py-2.5 flex justify-center items-center hover:bg-stone-300",
+                                        pathname.split("/").pop() === (handle || "") && "bg-stone-300"
+                                    )}
+                                    onClick={() => setShow(false)}
+                                    key={item.id}
+                                >
+                                    {item.title}
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+        </div>
+    );
 }
 
 export default NavMenu;
