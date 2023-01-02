@@ -17,16 +17,16 @@ function PolicyRoute({ params }: HydrogenRouteProps) {
 
     const policy: Record<string, boolean> = {
         privacyPolicy: handle === "privacy-policy",
+        refundPolicy: handle === "refund-policy",
         shippingPolicy: handle === "shipping-policy",
         termsOfService: handle === "terms-of-service",
-        refundPolicy: handle === "refund-policy",
     };
 
     if (
         !policy.privacyPolicy &&
+        !policy.refundPolicy &&
         !policy.shippingPolicy &&
-        !policy.termsOfService &&
-        !policy.refundPolicy
+        !policy.termsOfService
     ) {
         return <NotFound />;
     }

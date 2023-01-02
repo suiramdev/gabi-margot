@@ -12,21 +12,21 @@ const POLICIES_QUERY = gql`
   query PoliciesQuery(
     $languageCode: LanguageCode
     $privacyPolicy: Boolean!
+    $refundPolicy: Boolean!
     $shippingPolicy: Boolean!
     $termsOfService: Boolean!
-    $refundPolicy: Boolean!
   ) @inContext(language: $languageCode) {
     shop {
       privacyPolicy @include(if: $privacyPolicy) {
+        ...Policy
+      }
+      refundPolicy @include(if: $refundPolicy) {
         ...Policy
       }
       shippingPolicy @include(if: $shippingPolicy) {
         ...Policy
       }
       termsOfService @include(if: $termsOfService) {
-        ...Policy
-      }
-      refundPolicy @include(if: $refundPolicy) {
         ...Policy
       }
     }

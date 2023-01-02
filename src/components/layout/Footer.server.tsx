@@ -29,28 +29,25 @@ function Footer() {
                 <span className="flex items-center gap-1"><PlaceIcon size={24} /> Château-Gontier, Mayenne</span>
                 <a
                     className="flex items-center gap-1"
-                    href="tel:+336 09 66 33 75"
-                    title="Appeler le 06 09 66 33 75"
+                    href="tel:+336 42 54 35 19"
+                    title="Appeler le 06 42 54 35 19"
                 >
-                    <PhoneIcon size={24} /> (+33) 6 09 66 33 75
+                    <PhoneIcon size={24} /> (+33) 6 42 54 35 19
                 </a>
             </FooterSection>
             <FooterSection title="Autres pages">
-                <Link to="/about-us">Qui sommes nous</Link>
-                <Link to="/contact-us">Nous contacter</Link>
+                <Link to="/pages/about-us">Qui sommes nous</Link>
+                <Link to="/pages/contact-us">Nous contacter</Link>
             </FooterSection>
             <FooterSection title="Informations">
                 <Link to="/policies/privacy-policy">Politique de confidentialité</Link>
-                <Link to="/policies/shipping-policy">Politique d&apos;expédition</Link>
-                <Link to="/policies/terms-of-service">Conditions de service</Link>
                 <Link to="/policies/refund-policy">Politique de remboursement</Link>
+                <Link to="/policies/shipping-policy">Politique d&apos;expédition</Link>
+                <Link to="/policies/terms-of-service">Conditions d&apos;utilisation</Link>
             </FooterSection>
             <FooterSection title="Suivez nous">
                 <div className="flex gap-2">
-                    <Link to="/" title="Aller sur la page Facebook">
-                        <FacebookIcon size={32} />
-                    </Link>
-                    <Link to="/" title="Aller sur la page Instagram">
+                    <Link to="https://www.instagram.com/gabi_et_margot/" title="Aller sur la page Instagram">
                         <InstagramIcon size={32} />
                     </Link>
                 </div>
