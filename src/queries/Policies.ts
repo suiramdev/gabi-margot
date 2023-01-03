@@ -3,10 +3,6 @@ import { gql } from "@shopify/hydrogen";
 const POLICIES_QUERY = gql`
   fragment Policy on ShopPolicy {
     body
-    handle
-    id
-    title
-    url
   }
 
   query PoliciesQuery(

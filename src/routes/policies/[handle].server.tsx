@@ -54,9 +54,6 @@ function PolicyRoute({ params }: HydrogenRouteProps) {
         <Layout>
             <PageSeo handle={handle} />
             <section className="mx-auto p-20 prose">
-                <Suspense fallback={null}>
-                    <h1>{page.title}</h1>
-                </Suspense>
                 {/* eslint-disable-next-line react/no-danger */}
                 <div dangerouslySetInnerHTML={{ __html: page.body }} />
             </section>
