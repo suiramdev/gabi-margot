@@ -27,14 +27,13 @@ function Navbar({ items }: Props) {
                 {items.map((item) => {
                     const { pathname } = new URL(item.url || "");
                     return (
-                        <li>
+                        <li key={item.id}>
                             <Link
                                 to={`${pathname}`}
                                 className={clsx(
                                     "px-2.5 py-1 flex justify-center items-center hover:bg-stone-300 rounded-lg",
                                     pathname.split("/").pop() === (handle || "") && "bg-stone-300"
                                 )}
-                                key={item.id}
                             >
                                 {item.title}
                             </Link>
