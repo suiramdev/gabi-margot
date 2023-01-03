@@ -10,7 +10,7 @@
 
     body {
         @apply bg-stone-50 text-stone-900;
-        @apply after:content-[''] after:fixed after:top-0 after:left-0 after:w-screen after:h-screen after:bg-noise after:pointer-events-none;
+        @apply relative after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-noise after:pointer-events-none;
     }
 
     h1, h2, h3 {
