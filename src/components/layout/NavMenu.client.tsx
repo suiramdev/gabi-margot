@@ -39,7 +39,7 @@ function NavMenu({ items }: Props) {
                     {items.map((item) => {
                         const { pathname } = new URL(item.url || "");
                         return (
-                            <li>
+                            <li key={item.id}>
                                 <Link
                                     to={`${pathname}`}
                                     className={clsx(
@@ -47,7 +47,6 @@ function NavMenu({ items }: Props) {
                                         pathname.split("/").pop() === (handle || "") && "bg-stone-300"
                                     )}
                                     onClick={() => setShow(false)}
-                                    key={item.id}
                                 >
                                     {item.title}
                                 </Link>
