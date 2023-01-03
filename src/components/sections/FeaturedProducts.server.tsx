@@ -19,7 +19,7 @@ function FeaturedProducts() {
         <section
             className="bg-default-100"
         >
-            <h2 className="mb-10 text-center">Ils peuvent aussi vous interesser</h2>
+            <h2 className="mb-10 text-center">Découvrez notre sélection</h2>
             <div className="flex flex-wrap justify-center gap-5">
                 {collections.nodes.map((collection, k) => (
                     <Link

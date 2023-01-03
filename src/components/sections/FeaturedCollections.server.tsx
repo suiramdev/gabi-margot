@@ -17,7 +17,7 @@ function FeaturedCollections() {
 
     return (
         <section>
-            <h2 className="mb-10 text-center">Parmis nos collections</h2>
+            <h2 className="mb-10 text-center">Une gamme de produits unique</h2>
             <div className="flex flex-wrap justify-center gap-5">
                 {collections.nodes.map((collection, k) => (
                     <Link
